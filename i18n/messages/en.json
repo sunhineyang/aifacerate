@@ -112,5 +112,14 @@
       "pending": "Pending",
       "completed": "Completed"
     }
+  },
+  "feedback": {
+    "title": "Feedback",
+    "description": "We'd love to hear what went well or how we can improve the product experience.",
+    "submit": "Submit",
+    "loading": "Submitting...",
+    "contact_tip": "Other ways to contact us",
+    "rating_tip": "How do you feel about ShipAny?",
+    "placeholder": "Leave your words here..."
   }
 }

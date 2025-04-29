@@ -10,6 +10,20 @@ Authorization: Bearer {{apiKey}}
   "message": "hello"
 }
 
+### get user info
+POST {{baseUrl}}/api/get-user-info
+Content-Type: application/json
+Authorization: Bearer {{apiKey}}
+
+
+### get user credits
+POST {{baseUrl}}/api/get-user-credits
+Content-Type: application/json
+Authorization: Bearer {{apiKey}}
+
+
+
+
 ### gen image
 POST {{baseUrl}}/api/demo/gen-image
 Content-Type: application/json

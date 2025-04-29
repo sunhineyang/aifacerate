@@ -93,3 +93,12 @@ create table affiliates (
     reward_percent INT NOT NULL default 0,
     reward_amount INT NOT NULL default 0
 );
+
+CREATE TABLE feedbacks (
+    id SERIAL PRIMARY KEY,
+    created_at timestamptz,
+    status VARCHAR(50),
+    user_uuid VARCHAR(255),
+    content TEXT,
+    rating INT
+);

@@ -26,9 +26,7 @@ export default function BlogDetail({ post }: { post: Post }) {
           )}
           <div>
             {post.author_name && (
-              <a href="javascript:void(0)" className="font-medium">
-                {post.author_name}
-              </a>
+              <span className="font-medium">{post.author_name}</span>
             )}
 
             <span className="ml-2 text-muted-foreground">
@@ -36,7 +34,7 @@ export default function BlogDetail({ post }: { post: Post }) {
             </span>
           </div>
         </div>
-        <div className="relative mt-0 grid max-w-screen-xl gap-4 lg:mt-0 lg:grid lg:grid-cols-12 lg:gap-6">
+        <div className="relative py-8 grid max-w-screen-xl gap-4 lg:mt-0 lg:grid lg:grid-cols-12 lg:gap-6">
           <div className="order-2 lg:order-none lg:col-span-8">
             {post.content && <Markdown content={post.content} />}
           </div>

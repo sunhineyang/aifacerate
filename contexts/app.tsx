@@ -37,6 +37,8 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
   const [showSignModal, setShowSignModal] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
 
+  const [showFeedback, setShowFeedback] = useState<boolean>(false);
+
   const fetchUserInfo = async function () {
     try {
       const resp = await fetch("/api/get-user-info", {
@@ -127,6 +129,8 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
         setShowSignModal,
         user,
         setUser,
+        showFeedback,
+        setShowFeedback,
       }}
     >
       {children}
