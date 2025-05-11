@@ -145,3 +145,42 @@ export async function getUserUuidsByEmail(email: string) {
 
   return data.map((user) => user.uuid);
 }
+
+export async function getUsersTotal(): Promise<number | undefined> {
+  const supabase = getSupabaseClient();
+  const { data, error } = await supabase.from("users").select("count", {
+    count: "exact",
+  });
+
+  if (error) {
+    return undefined;
+  }
+
+  return data[0].count;
+}
+
+export async function getUserCountByDate(
+  startTime: string
+): Promise<Map<string, number> | undefined> {
+  const supabase = getSupabaseClient();
+  let query = supabase
+    .from("users")
+    .select("created_at")
+    .gte("created_at", startTime);
+
+  query = query.order("created_at", { ascending: true });
+
+  const { data, error } = await query;
+  if (error) {
+    return undefined;
+  }
+
+  // Group by date in memory since Supabase doesn't support GROUP BY directly
+  const dateCountMap = new Map<string, number>();
+  data.forEach((item) => {
+    const date = item.created_at.split("T")[0];
+    dateCountMap.set(date, (dateCountMap.get(date) || 0) + 1);
+  });
+
+  return dateCountMap;
+}

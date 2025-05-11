@@ -26,7 +26,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function ({
+export default async function PostsPage({
   params,
 }: {
   params: Promise<{ locale: string }>;

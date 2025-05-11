@@ -51,6 +51,7 @@ export interface NavItem {
   is_expand?: boolean;
   className?: string;
   children?: NavItem[];
+  onClick?: () => void;
 }
 
 export interface Nav {
@@ -96,4 +97,27 @@ export interface AgreementItem {
 
 export interface Agreement {
   items?: AgreementItem[];
+}
+
+export interface Account {
+  items?: NavItem[];
+}
+
+export interface Library {
+  title?: string;
+  items?: LibraryItem[];
+  more?: NavItem;
+}
+
+export interface LibraryItem extends NavItem {
+  actions?: NavItem[];
+}
+
+export interface DataCard {
+  title?: string;
+  label?: string;
+  value?: string;
+  description?: string;
+  tip?: string;
+  icon?: string;
 }

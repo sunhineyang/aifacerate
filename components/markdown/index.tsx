@@ -4,7 +4,7 @@ import "./markdown.css";
 export default function Markdown({ content }: { content: string }) {
   return (
     <MDEditor.Markdown
-      className="markdown"
+      className="markdown bg-background"
       source={content}
       components={{
         a: ({ children, ...props }) => (

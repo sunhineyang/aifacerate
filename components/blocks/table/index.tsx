@@ -1,26 +1,26 @@
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
 
-import Copy from "./copy";
-import { CopyToClipboard } from "react-copy-to-clipboard";
 import { TableColumn } from "@/types/blocks/table";
+import TableItemImage from "./image";
+import TableItemLabel from "./label";
+import TableItemTime from "./time";
+import Copy from "./copy";
 
-export default function ({
+export default function TableComponent({
   columns,
   data,
-  empty_message,
+  emptyMessage,
 }: {
   columns?: TableColumn[];
   data?: any[];
-  empty_message?: string;
+  emptyMessage?: string;
 }) {
   if (!columns) {
     columns = [];
@@ -28,8 +28,8 @@ export default function ({
 
   return (
     <Table className="w-full">
-      <TableHeader>
-        <TableRow>
+      <TableHeader className="">
+        <TableRow className="rounded-md">
           {columns &&
             columns.map((item: TableColumn, idx: number) => {
               return (
@@ -43,35 +43,58 @@ export default function ({
       <TableBody>
         {data && data.length > 0 ? (
           data.map((item: any, idx: number) => (
-            <TableRow key={idx}>
+            <TableRow key={idx} className="h-16">
               {columns &&
                 columns.map((column: TableColumn, iidx: number) => {
-                  const content = column.callback
-                    ? column.callback(item)
-                    : item[column.name as keyof typeof item];
                   const value = item[column.name as keyof typeof item];
 
-                  if (column.type === "copy" && value) {
-                    return (
-                      <TableCell key={iidx} className={column.className}>
-                        <Copy text={value}>{content}</Copy>
-                      </TableCell>
+                  const content = column.callback
+                    ? column.callback(item)
+                    : value;
+
+                  let cellContent = content;
+
+                  if (column.type === "image") {
+                    cellContent = (
+                      <TableItemImage
+                        value={value}
+                        options={column.options}
+                        className={column.className}
+                      />
                     );
+                  } else if (column.type === "time") {
+                    cellContent = (
+                      <TableItemTime
+                        value={value}
+                        options={column.options}
+                        className={column.className}
+                      />
+                    );
+                  } else if (column.type === "label") {
+                    cellContent = (
+                      <TableItemLabel
+                        value={value}
+                        options={column.options}
+                        className={column.className}
+                      />
+                    );
+                  } else if (column.type === "copy" && value) {
+                    cellContent = <Copy text={value}>{content}</Copy>;
                   }
 
                   return (
                     <TableCell key={iidx} className={column.className}>
-                      {content}
+                      {cellContent}
                     </TableCell>
                   );
                 })}
             </TableRow>
           ))
         ) : (
-          <TableRow>
+          <TableRow className="">
             <TableCell colSpan={columns.length}>
               <div className="flex w-full justify-center items-center py-8 text-muted-foreground">
-                <p>{empty_message}</p>
+                <p>{emptyMessage}</p>
               </div>
             </TableCell>
           </TableRow>

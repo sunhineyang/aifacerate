@@ -1,19 +1,26 @@
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
 import { ReactNode } from "react";
-import Sidebar from "@/components/dashboard/sidebar";
 import { Sidebar as SidebarType } from "@/types/blocks/sidebar";
+import DashboardSidebar from "./sidebar";
 
-export default async function DashboardLayout({
+export default function DashboardLayout({
   children,
   sidebar,
 }: {
   children: ReactNode;
-  sidebar?: SidebarType;
+  sidebar: SidebarType;
 }) {
   return (
-    <SidebarProvider>
-      {sidebar && <Sidebar sidebar={sidebar} />}
+    <SidebarProvider
+      style={
+        {
+          "--sidebar-width": "calc(var(--spacing) * 60)",
+          "--header-height": "calc(var(--spacing) * 12)",
+        } as React.CSSProperties
+      }
+    >
+      <DashboardSidebar variant="inset" sidebar={sidebar} />
       <SidebarInset>{children}</SidebarInset>
     </SidebarProvider>
   );

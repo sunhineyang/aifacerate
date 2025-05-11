@@ -1,15 +1,8 @@
 "use client";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  BadgeCheck,
-  Bell,
-  ChevronsUpDown,
-  CreditCard,
-  Link,
-  LogOut,
-  Sparkles,
-} from "lucide-react";
+import { ChevronsUpDown, LogOut } from "lucide-react";
+import { Link } from "@/i18n/routing";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,14 +19,16 @@ import {
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar";
+import Icon from "@/components/icon";
 
 import { Button } from "@/components/ui/button";
-import { User } from "@/types/user";
 import { signOut } from "next-auth/react";
 import { useAppContext } from "@/contexts/app";
 import { useTranslations } from "next-intl";
+import { Account } from "@/types/blocks/base";
+import { Fragment } from "react";
 
-export default function () {
+export default function SidebarUser({ account }: { account?: Account }) {
   const t = useTranslations();
 
   const { user, setShowSignModal } = useAppContext();
@@ -71,7 +66,7 @@ export default function () {
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent
-                className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
+                className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg bg-background"
                 side={isMobile ? "bottom" : "right"}
                 align="end"
                 sideOffset={4}
@@ -94,13 +89,30 @@ export default function () {
                   </div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem
-                  className="cursor-pointer"
-                  onClick={() => signOut()}
-                >
-                  <LogOut />
-                  {t("user.sign_out")}
-                </DropdownMenuItem>
+                <DropdownMenuGroup>
+                  {account?.items?.map((item, index) => (
+                    <Fragment key={index}>
+                      <DropdownMenuItem className="cursor-pointer">
+                        <Link
+                          href={item.url as any}
+                          target={item.target}
+                          className="w-full flex items-center gap-2"
+                        >
+                          {item.icon && <Icon name={item.icon} />}
+                          {item.title}
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                    </Fragment>
+                  ))}
+                  <DropdownMenuItem
+                    className="cursor-pointer"
+                    onClick={() => signOut()}
+                  >
+                    <LogOut />
+                    {t("user.sign_out")}
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
               </DropdownMenuContent>
             </DropdownMenu>
           </SidebarMenuItem>

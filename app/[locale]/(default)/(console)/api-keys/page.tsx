@@ -2,9 +2,10 @@ import Empty from "@/components/blocks/empty";
 import TableSlot from "@/components/console/slots/table";
 import { Table as TableSlotType } from "@/types/slots/table";
 import { getTranslations } from "next-intl/server";
-import { getUserApikeys } from "@/models/apikey";
+import { getUserApikeys, ApikeyStatus } from "@/models/apikey";
 import { getUserUuid } from "@/services/user";
 import moment from "moment";
+import { Badge } from "@/components/ui/badge";
 
 export default async function () {
   const t = await getTranslations();

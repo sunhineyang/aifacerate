@@ -31,8 +31,9 @@ export default async function () {
       items: [
         {
           title: t("my_credits.recharge"),
-          url: "/#pricing",
+          url: "/pricing",
           target: "_blank",
+          icon: "RiBankCardLine",
         },
       ],
     },

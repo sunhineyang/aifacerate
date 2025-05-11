@@ -228,3 +228,46 @@ export async function getPaiedOrders(
 
   return data;
 }
+
+export async function getPaidOrdersTotal(): Promise<number | undefined> {
+  const supabase = getSupabaseClient();
+  const { data, error } = await supabase
+    .from("orders")
+    .select("count", { count: "exact" })
+    .eq("status", "paid");
+
+  if (error) {
+    return undefined;
+  }
+
+  return data[0].count;
+}
+
+export async function getOrderCountByDate(
+  startTime: string,
+  status?: string
+): Promise<Map<string, number> | undefined> {
+  const supabase = getSupabaseClient();
+  let query = supabase
+    .from("orders")
+    .select("created_at")
+    .gte("created_at", startTime);
+  if (status) {
+    query = query.eq("status", status);
+  }
+  query = query.order("created_at", { ascending: true });
+
+  const { data, error } = await query;
+  if (error) {
+    return undefined;
+  }
+
+  // Group by date in memory since Supabase doesn't support GROUP BY directly
+  const dateCountMap = new Map<string, number>();
+  data.forEach((item) => {
+    const date = item.created_at.split("T")[0];
+    dateCountMap.set(date, (dateCountMap.get(date) || 0) + 1);
+  });
+
+  return dateCountMap;
+}

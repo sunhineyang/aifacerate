@@ -32,6 +32,16 @@ export default async function AdminLayout({
     nav: {
       items: [
         {
+          title: "Dashboard",
+          url: "/admin",
+          icon: "RiDashboardLine",
+        },
+      ],
+    },
+    library: {
+      title: "Menu",
+      items: [
+        {
           title: "Users",
           url: "/admin/users",
           icon: "RiUserLine",
@@ -39,13 +49,7 @@ export default async function AdminLayout({
         {
           title: "Orders",
           icon: "RiOrderPlayLine",
-          is_expand: true,
-          children: [
-            {
-              title: "Paid Orders",
-              url: "/admin/paid-orders",
-            },
-          ],
+          url: "/admin/orders",
         },
         {
           title: "Posts",
@@ -56,6 +60,28 @@ export default async function AdminLayout({
           title: "Feedbacks",
           url: "/admin/feedbacks",
           icon: "RiMessage2Line",
+        },
+      ],
+    },
+    bottomNav: {
+      items: [
+        {
+          title: "Documents",
+          url: "https://docs.shipany.ai",
+          target: "_blank",
+          icon: "RiFileTextLine",
+        },
+        {
+          title: "Blocks",
+          url: "https://shipany.ai/blocks",
+          target: "_blank",
+          icon: "RiDashboardLine",
+        },
+        {
+          title: "Showcases",
+          url: "https://shipany.ai/showcase",
+          target: "_blank",
+          icon: "RiAppsLine",
         },
       ],
     },
@@ -84,6 +110,22 @@ export default async function AdminLayout({
           url: "https://x.com/shipanyai",
           target: "_blank",
           icon: "RiTwitterLine",
+        },
+      ],
+    },
+    account: {
+      items: [
+        {
+          title: "Home",
+          url: "/",
+          icon: "RiHomeLine",
+          target: "_blank",
+        },
+        {
+          title: "Recharge",
+          url: "/pricing",
+          icon: "RiMoneyDollarBoxLine",
+          target: "_blank",
         },
       ],
     },

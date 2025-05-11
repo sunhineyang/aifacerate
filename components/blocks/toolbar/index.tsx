@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Button as ButtonType } from "@/types/blocks/base";
 import Icon from "@/components/icon";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 
 export default function Toolbar({ items }: { items?: ButtonType[] }) {
   return (
@@ -14,12 +14,12 @@ export default function Toolbar({ items }: { items?: ButtonType[] }) {
           className={item.className}
         >
           <Link
-            href={item.url || ""}
+            href={item.url as any}
             target={item.target}
             className="flex items-center gap-1"
           >
-            {item.title}
             {item.icon && <Icon name={item.icon} />}
+            {item.title}
           </Link>
         </Button>
       ))}

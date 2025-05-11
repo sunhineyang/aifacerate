@@ -99,7 +99,7 @@ export default async function () {
       {
         name: "content",
         title: "Content",
-        type: "markdown_editor",
+        type: "editor",
         placeholder: "Post Content",
       },
     ],

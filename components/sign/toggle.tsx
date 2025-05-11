@@ -10,7 +10,7 @@ export default function SignToggle() {
   const { user } = useAppContext();
 
   return (
-    <div className="flex items-center gap-x-2 px-2">
+    <div className="flex items-center gap-x-2 px-2 cursor-pointer">
       {user ? <User user={user} /> : <SignIn />}
     </div>
   );

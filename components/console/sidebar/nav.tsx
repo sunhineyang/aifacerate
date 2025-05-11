@@ -1,7 +1,7 @@
 "use client";
 
 import Icon from "@/components/icon";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { NavItem } from "@/types/blocks/base";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -16,6 +16,7 @@ export default function ({
   items: NavItem[];
 }) {
   const pathname = usePathname();
+  console.log(pathname);
 
   return (
     <nav
@@ -28,10 +29,10 @@ export default function ({
       {items.map((item, index) => (
         <Link
           key={index}
-          href={item.url || ""}
+          href={item.url as any}
           className={cn(
             buttonVariants({ variant: "ghost" }),
-            item.is_active
+            item.is_active || pathname.includes(item.url as any)
               ? "bg-muted/50 text-primary hover:bg-muted hover:text-primary"
               : "hover:bg-transparent hover:underline",
             "justify-start"

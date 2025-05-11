@@ -5,21 +5,38 @@ import * as React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
-  DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { User } from "@/types/user";
 import { signOut } from "next-auth/react";
 import { useTranslations } from "next-intl";
+import { NavItem } from "@/types/blocks/base";
 
 export default function SignUser({ user }: { user: User }) {
   const t = useTranslations();
+
+  const dropdownItems: NavItem[] = [
+    {
+      title: user.nickname,
+    },
+    {
+      title: t("user.user_center"),
+      url: "/my-orders",
+    },
+    {
+      title: t("user.admin_system"),
+      url: "/admin/users",
+    },
+    {
+      title: t("user.sign_out"),
+      onClick: () => signOut(),
+    },
+  ];
 
   return (
     <DropdownMenu>
@@ -29,30 +46,24 @@ export default function SignUser({ user }: { user: User }) {
           <AvatarFallback>{user.nickname}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="mx-4">
-        <DropdownMenuLabel className="text-center truncate">
-          {user.nickname}
-        </DropdownMenuLabel>
-        <DropdownMenuSeparator />
-
-        <DropdownMenuItem className="flex justify-center cursor-pointer">
-          <Link href="/my-orders">{t("user.user_center")}</Link>
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
-
-        <DropdownMenuItem className="flex justify-center cursor-pointer">
-          <Link href="/admin/users" target="_blank">
-            {t("user.admin_system")}
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
-
-        <DropdownMenuItem
-          className="flex justify-center cursor-pointer"
-          onClick={() => signOut()}
-        >
-          {t("user.sign_out")}
-        </DropdownMenuItem>
+      <DropdownMenuContent className="mx-4 bg-background">
+        {dropdownItems.map((item, index) => (
+          <React.Fragment key={index}>
+            <DropdownMenuItem
+              key={index}
+              className="flex justify-center cursor-pointer"
+            >
+              {item.url ? (
+                <Link href={item.url as any} target={item.target}>
+                  {item.title}
+                </Link>
+              ) : (
+                <button onClick={item.onClick}>{item.title}</button>
+              )}
+            </DropdownMenuItem>
+            {index !== dropdownItems.length - 1 && <DropdownMenuSeparator />}
+          </React.Fragment>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   );

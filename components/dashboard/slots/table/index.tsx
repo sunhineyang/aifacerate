@@ -2,6 +2,7 @@ import Header from "@/components/dashboard/header";
 import TableBlock from "@/components/blocks/table";
 import { Table as TableSlotType } from "@/types/slots/table";
 import Toolbar from "@/components/blocks/toolbar";
+import { Card } from "@/components/ui/card";
 
 export default function ({ ...table }: TableSlotType) {
   return (
@@ -20,9 +21,9 @@ export default function ({ ...table }: TableSlotType) {
           </p>
         )}
         {table.toolbar && <Toolbar items={table.toolbar.items} />}
-        <div className="overflow-x-auto">
-          <TableBlock columns={table.columns} data={table.data} />
-        </div>
+        <Card className="overflow-x-auto px-6">
+          <TableBlock columns={table.columns ?? []} data={table.data ?? []} />
+        </Card>
       </div>
     </>
   );

@@ -48,6 +48,7 @@ export default async function () {
     submit: {
       button: {
         title: t("api_keys.form.submit"),
+        icon: "RiCheckLine",
       },
       handler: async (data: FormData, passby: any) => {
         "use server";

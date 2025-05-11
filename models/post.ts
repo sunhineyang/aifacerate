@@ -107,3 +107,16 @@ export async function getPostsByLocale(
 
   return data;
 }
+
+export async function getPostsTotal(): Promise<number | undefined> {
+  const supabase = getSupabaseClient();
+  const { data, error } = await supabase.from("posts").select("count", {
+    count: "exact",
+  });
+
+  if (error) {
+    return undefined;
+  }
+
+  return data[0].count;
+}

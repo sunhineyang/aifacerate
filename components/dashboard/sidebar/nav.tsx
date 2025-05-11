@@ -1,92 +1,54 @@
 "use client";
 
 import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { NavItem, Nav as NavType } from "@/types/blocks/base";
-import {
   SidebarGroup,
-  SidebarGroupLabel,
+  SidebarGroupContent,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
-
-import { ChevronRight } from "lucide-react";
+import { Nav as NavType } from "@/types/blocks/base";
+import { Link } from "@/i18n/routing";
 import Icon from "@/components/icon";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function ({ nav }: { nav: NavType }) {
+export default function Nav({ nav }: { nav: NavType }) {
   const pathname = usePathname();
 
   return (
     <SidebarGroup>
-      {/* <SidebarGroupLabel>Features</SidebarGroupLabel> */}
-      <SidebarMenu>
-        {nav.items?.map((item: NavItem) =>
-          item.children ? (
-            <Collapsible
-              key={item.title}
-              asChild
-              defaultOpen={item.is_expand}
-              className="group/collapsible"
-            >
-              <SidebarMenuItem>
-                <CollapsibleTrigger asChild>
-                  <SidebarMenuButton tooltip={item.title}>
-                    {item.icon && <Icon name={item.icon} className="text-xl" />}
-                    <span>{item.title}</span>
-                    <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
-                  </SidebarMenuButton>
-                </CollapsibleTrigger>
-                <CollapsibleContent>
-                  <SidebarMenuSub>
-                    {item.children?.map((subItem: NavItem) => (
-                      <SidebarMenuSubItem key={subItem.title}>
-                        <SidebarMenuSubButton
-                          asChild
-                          className={`${
-                            subItem.is_active ? "text-primary" : ""
-                          }`}
-                        >
-                          <Link
-                            href={subItem.url || ""}
-                            className="flex items-center gap-1"
-                          >
-                            {subItem.icon && (
-                              <Icon name={subItem.icon} className="text-xl" />
-                            )}
-                            <span>{subItem.title}</span>
-                          </Link>
-                        </SidebarMenuSubButton>
-                      </SidebarMenuSubItem>
-                    ))}
-                  </SidebarMenuSub>
-                </CollapsibleContent>
-              </SidebarMenuItem>
-            </Collapsible>
-          ) : (
+      <SidebarGroupContent className="flex flex-col gap-2 mt-4">
+        <SidebarMenu>
+          {nav?.items?.map((item) => (
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton
-                asChild
                 tooltip={item.title}
-                className={`${item.is_active ? "text-primary" : ""}`}
+                className={`${
+                  item.is_active || pathname.endsWith(item.url as string)
+                    ? "bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground min-w-8 duration-200 ease-linear"
+                    : ""
+                }`}
               >
-                <Link href={item.url || ""} className="flex items-center gap-1">
-                  {item.icon && <Icon name={item.icon} className="text-xl" />}
-                  <span>{item.title}</span>
-                </Link>
+                {item.url ? (
+                  <Link
+                    href={item.url as any}
+                    target={item.target}
+                    className="w-full flex items-center gap-2 cursor-pointer"
+                  >
+                    {item.icon && <Icon name={item.icon} />}
+                    <span>{item.title}</span>
+                  </Link>
+                ) : (
+                  <>
+                    {item.icon && <Icon name={item.icon} />}
+                    <span>{item.title}</span>
+                  </>
+                )}
               </SidebarMenuButton>
             </SidebarMenuItem>
-          )
-        )}
-      </SidebarMenu>
+          ))}
+        </SidebarMenu>
+      </SidebarGroupContent>
     </SidebarGroup>
   );
 }

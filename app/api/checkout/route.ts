@@ -6,6 +6,8 @@ import { Order } from "@/types/order";
 import Stripe from "stripe";
 import { findUserByUuid } from "@/models/user";
 import { getSnowId } from "@/lib/hash";
+import { getPricingPage } from "@/services/page";
+import { PricingItem } from "@/types/blocks/pricing";
 
 export async function POST(req: Request) {
   try {
@@ -29,6 +31,27 @@ export async function POST(req: Request) {
 
     if (!amount || !interval || !currency || !product_id) {
       return respErr("invalid params");
+    }
+
+    // validate checkout params
+    const page = await getPricingPage("en");
+    if (!page || !page.pricing || !page.pricing.items) {
+      return respErr("invalid pricing table");
+    }
+
+    const item = page.pricing.items.find(
+      (item: PricingItem) => item.product_id === product_id
+    );
+    if (
+      !item ||
+      !item.amount ||
+      !item.interval ||
+      !item.currency ||
+      item.amount !== amount ||
+      item.interval !== interval ||
+      item.currency !== currency
+    ) {
+      return respErr("invalid checkout params");
     }
 
     if (!["year", "month", "one-time"].includes(interval)) {

@@ -1,39 +1,87 @@
+"use client";
+
+import * as React from "react";
+import {
+  IconCamera,
+  IconChartBar,
+  IconDashboard,
+  IconDatabase,
+  IconFileAi,
+  IconFileDescription,
+  IconFileWord,
+  IconFolder,
+  IconHelp,
+  IconInnerShadowTop,
+  IconListDetails,
+  IconReport,
+  IconSearch,
+  IconSettings,
+  IconUsers,
+} from "@tabler/icons-react";
+
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarHeader,
-  SidebarRail,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarFooter,
 } from "@/components/ui/sidebar";
-
-import Footer from "./footer";
-import Header from "./header";
 import Nav from "./nav";
 import { Sidebar as SidebarType } from "@/types/blocks/sidebar";
-import User from "./user";
+import { Link } from "@/i18n/routing";
+import Image from "next/image";
+import SidebarUser from "./user";
+import Footer from "./footer";
+import { Library } from "./library";
+import { BottomNav } from "./bottom_nav";
 
-export default function ({ sidebar }: { sidebar: SidebarType }) {
-  if (sidebar.disabled) {
-    return null;
-  }
-
+export default function DashboardSidebar({
+  sidebar,
+  ...props
+}: React.ComponentProps<typeof Sidebar> & { sidebar: SidebarType }) {
   return (
-    <Sidebar collapsible="icon">
-      {sidebar?.brand && (
-        <SidebarHeader>
-          <Header brand={sidebar.brand} />
-        </SidebarHeader>
-      )}
-
+    <Sidebar collapsible="offcanvas" {...props}>
+      <SidebarHeader>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              asChild
+              className="data-[slot=sidebar-menu-button]:!p-1.5"
+            >
+              <Link
+                href={sidebar.brand?.url as any}
+                className="flex items-center gap-2"
+              >
+                {sidebar.brand?.logo && (
+                  <Image
+                    src={sidebar.brand?.logo?.src as any}
+                    alt={sidebar.brand?.title as string}
+                    width={28}
+                    height={28}
+                    className="rounded-full"
+                  />
+                )}
+                <span className="text-base font-semibold">
+                  {sidebar.brand?.title}
+                </span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarHeader>
       <SidebarContent>
-        {sidebar?.nav && <Nav nav={sidebar.nav} />}
-        {sidebar?.library && sidebar.library}
+        {sidebar.nav && <Nav nav={sidebar.nav} />}
+        {sidebar.library && <Library library={sidebar.library} />}
+        {sidebar.bottomNav && (
+          <BottomNav nav={sidebar.bottomNav} className="mt-auto" />
+        )}
       </SidebarContent>
       <SidebarFooter>
-        <User />
+        <SidebarUser account={sidebar.account} />
         {sidebar?.social && <Footer social={sidebar.social} />}
       </SidebarFooter>
-      <SidebarRail />
     </Sidebar>
   );
 }

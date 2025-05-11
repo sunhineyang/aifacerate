@@ -4,7 +4,7 @@ import HappyUsers from "./happy-users";
 import HeroBg from "./bg";
 import { Hero as HeroType } from "@/types/blocks/hero";
 import Icon from "@/components/icon";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 
 export default function Hero({ hero }: { hero: HeroType }) {
   if (hero.disabled) {
@@ -33,27 +33,27 @@ export default function Hero({ hero }: { hero: HeroType }) {
           )}
           <div className="text-center">
             {hero.announcement && (
-              <a
-                href={hero.announcement.url}
+              <Link
+                href={hero.announcement.url as any}
                 className="mx-auto mb-3 inline-flex items-center gap-3 rounded-full border px-2 py-1 text-sm"
               >
                 {hero.announcement.label && (
                   <Badge>{hero.announcement.label}</Badge>
                 )}
                 {hero.announcement.title}
-              </a>
+              </Link>
             )}
 
             {texts && texts.length > 1 ? (
-              <h1 className="mx-auto mb-3 mt-4 max-w-3xl text-balance text-4xl font-bold lg:mb-7 lg:text-7xl">
+              <h1 className="mx-auto mb-3 mt-4 max-w-6xl text-balance text-4xl font-bold lg:mb-7 lg:text-7xl">
                 {texts[0]}
-                <span className="bg-gradient-to-r from-primary via-primary to-primary bg-clip-text text-transparent">
+                <span className="bg-linear-to-r from-primary via-primary to-primary bg-clip-text text-transparent">
                   {highlightText}
                 </span>
                 {texts[1]}
               </h1>
             ) : (
-              <h1 className="mx-auto mb-3 mt-4 max-w-3xl text-balance text-4xl font-bold lg:mb-7 lg:text-7xl">
+              <h1 className="mx-auto mb-3 mt-4 max-w-6xl text-balance text-4xl font-bold lg:mb-7 lg:text-7xl">
                 {hero.title}
               </h1>
             )}
@@ -68,7 +68,7 @@ export default function Hero({ hero }: { hero: HeroType }) {
                   return (
                     <Link
                       key={i}
-                      href={item.url || ""}
+                      href={item.url as any}
                       target={item.target || ""}
                       className="flex items-center"
                     >
@@ -77,10 +77,8 @@ export default function Hero({ hero }: { hero: HeroType }) {
                         size="lg"
                         variant={item.variant || "default"}
                       >
+                        {item.icon && <Icon name={item.icon} className="" />}
                         {item.title}
-                        {item.icon && (
-                          <Icon name={item.icon} className="ml-1" />
-                        )}
                       </Button>
                     </Link>
                   );

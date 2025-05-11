@@ -10,7 +10,7 @@ export default function Feature3({ section }: { section: SectionType }) {
 
   return (
     <section className="py-16">
-      <div className="lg:container px-8">
+      <div className="container px-8">
         <div className="mb-16 max-w-xl px-8 lg:px-0">
           {section.label && (
             <Badge variant="outline" className="mb-4">
@@ -37,7 +37,7 @@ export default function Feature3({ section }: { section: SectionType }) {
                   >
                     <div className="flex gap-4 rounded-md px-8 py-4 text-left hover:bg-muted/50 lg:block lg:px-4">
                       <div className="flex flex-col items-center lg:contents">
-                        <span className="flex size-7 shrink-0 items-center justify-center rounded-full border bg-background font-mono text-xs font-medium lg:group-data-[state=active]:bg-primary lg:group-data-[state=active]:text-primary-foreground lg:group-data-[state=active]:ring lg:group-data-[state=active]:ring-primary/40">
+                        <span className="flex size-7 shrink-0 items-center justify-center rounded-full border bg-background font-mono text-xs font-medium lg:group-data-[state=active]:bg-primary lg:group-data-[state=active]:text-primary-foreground lg:group-data-[state=active]:ring-3 lg:group-data-[state=active]:ring-primary/40">
                           {index + 1}
                         </span>
                         <span className="h-full w-px bg-input lg:hidden"></span>
@@ -55,7 +55,7 @@ export default function Feature3({ section }: { section: SectionType }) {
                           <img
                             src={item.image?.src}
                             alt={item.image?.alt || item.title}
-                            className="h-full w-full rounded-md border object-cover shadow"
+                            className="h-full w-full rounded-md border object-cover shadow-sm"
                           />
                         </div>
                       </div>
@@ -78,7 +78,7 @@ export default function Feature3({ section }: { section: SectionType }) {
                       <img
                         src={item.image.src}
                         alt={item.image.alt || item.title}
-                        className="h-full w-full rounded-xl border object-cover shadow"
+                        className="h-full w-full rounded-xl border object-cover shadow-sm"
                       />
                     )}
                   </TabsContent>

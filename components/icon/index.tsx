@@ -103,7 +103,7 @@ export default function Icon({
   // Render the icon component instead of returning it directly
   return (
     <IconComponent
-      className={className}
+      className={`${className} cursor-pointer`}
       onClick={onClick}
       style={{ cursor: onClick ? "pointer" : "default" }}
     />

@@ -14,9 +14,9 @@ export default async function ({
     const session = await stripe.checkout.sessions.retrieve(session_id);
 
     await handleOrderSession(session);
-
-    redirect(process.env.NEXT_PUBLIC_PAY_SUCCESS_URL || "/");
   } catch (e) {
     redirect(process.env.NEXT_PUBLIC_PAY_FAIL_URL || "/");
   }
+
+  redirect(process.env.NEXT_PUBLIC_PAY_SUCCESS_URL || "/");
 }

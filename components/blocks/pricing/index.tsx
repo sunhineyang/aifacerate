@@ -110,7 +110,7 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
             {pricing.description}
           </p>
         </div>
-        <div className="flex flex-col items-center gap-2">
+        <div className="w-full flex flex-col items-center gap-2">
           {pricing.groups && pricing.groups.length > 0 && (
             <div className="flex h-12 mb-12 items-center rounded-md bg-muted p-1 text-lg">
               <RadioGroup
@@ -152,7 +152,7 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
             </div>
           )}
           <div
-            className={`md:min-w-96 mt-0 grid gap-6 md:grid-cols-${
+            className={`w-full mt-0 grid gap-6 md:grid-cols-${
               pricing.items?.filter(
                 (item) => !item.group || item.group === group
               )?.length

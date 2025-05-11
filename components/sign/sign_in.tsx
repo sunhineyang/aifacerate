@@ -9,7 +9,11 @@ export default function SignIn() {
   const { setShowSignModal } = useAppContext();
 
   return (
-    <Button variant="default" onClick={() => setShowSignModal(true)}>
+    <Button
+      variant="default"
+      onClick={() => setShowSignModal(true)}
+      className="cursor-pointer"
+    >
       {t("user.sign_in")}
     </Button>
   );

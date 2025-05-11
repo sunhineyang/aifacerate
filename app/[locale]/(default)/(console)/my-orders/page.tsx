@@ -46,7 +46,6 @@ export default async function () {
 
   const table: TableSlotType = {
     title: t("my_orders.title"),
-    description: t("my_orders.description"),
     toolbar: {
       items: [
         {

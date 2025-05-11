@@ -22,11 +22,13 @@ import { Button } from "@/components/ui/button";
 import Icon from "@/components/icon";
 import { Input } from "@/components/ui/input";
 import { Loader } from "lucide-react";
-import MarkdownEditor from "../editor/markdown";
+import MarkdownEditor from "@/components/blocks/mdeditor";
+import Editor from "@/components/blocks/editor";
+
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/routing";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -133,7 +135,7 @@ export default function ({
       }
 
       if (res.redirect_url) {
-        router.push(res.redirect_url);
+        router.push(res.redirect_url as any);
       }
     } catch (err: any) {
       console.log("submit form error", err);
@@ -145,7 +147,7 @@ export default function ({
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="w-full md:w-1/2 lg:w-1/3 space-y-6 px-2 pb-8"
+        className="w-full md:w-1/2 lg:w-1/2 space-y-6 px-2 pb-8"
       >
         {fields.map((item, index) => {
           return (
@@ -174,10 +176,10 @@ export default function ({
                         defaultValue={field.value}
                         {...item.attributes}
                       >
-                        <SelectTrigger>
+                        <SelectTrigger className="w-full bg-background rounded-md">
                           <SelectValue placeholder={item.placeholder} />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="bg-background rounded-md">
                           {item.options?.map((option: any) => (
                             <SelectItem key={option.value} value={option.value}>
                               {option.title}
@@ -190,11 +192,15 @@ export default function ({
                         value={field.value}
                         onChange={field.onChange}
                       />
+                    ) : item.type === "editor" ||
+                      item.type === "richtext_editor" ? (
+                      <Editor value={field.value} onChange={field.onChange} />
                     ) : (
                       <Input
                         {...field}
                         type={item.type || "text"}
                         placeholder={item.placeholder}
+                        className="bg-background rounded-md"
                         {...item.attributes}
                       />
                     )}
@@ -214,10 +220,9 @@ export default function ({
           <Button
             type="submit"
             variant={submit.button.variant}
-            className="flex items-center justify-center gap-2 font-semibold"
+            className="flex items-center justify-center gap-2 font-semibold cursor-pointer"
             disabled={loading}
           >
-            {submit.button.title}
             {loading ? (
               <Loader className="mr-2 h-4 w-4 animate-spin" />
             ) : (
@@ -225,6 +230,7 @@ export default function ({
                 <Icon name={submit.button.icon} className="size-4" />
               )
             )}
+            {submit.button.title}
           </Button>
         )}
       </form>

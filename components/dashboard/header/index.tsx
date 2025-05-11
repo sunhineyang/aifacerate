@@ -15,7 +15,7 @@ import { SidebarTrigger } from "@/components/ui/sidebar";
 
 export default function ({ crumb }: { crumb?: Crumb }) {
   return (
-    <header className="flex py-3 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+    <header className="flex border-b border-border py-3 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
       <div className="flex items-center gap-2 px-4">
         <SidebarTrigger className="-ml-1" />
         {crumb && crumb.items && crumb.items.length > 0 && (

@@ -64,3 +64,16 @@ export async function getFeedbacks(
 
   return feedbacks;
 }
+
+export async function getFeedbacksTotal(): Promise<number | undefined> {
+  const supabase = getSupabaseClient();
+  const { data, error } = await supabase.from("feedbacks").select("count", {
+    count: "exact",
+  });
+
+  if (error) {
+    return undefined;
+  }
+
+  return data[0].count;
+}

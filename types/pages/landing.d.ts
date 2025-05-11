@@ -2,6 +2,7 @@ import { Header } from "@/types/blocks/header";
 import { Hero } from "@/types/blocks/hero";
 import { Section } from "@/types/blocks/section";
 import { Footer } from "@/types/blocks/footer";
+import { Pricing } from "@/types/blocks/pricing";
 
 export interface LandingPage {
   header?: Header;
@@ -18,4 +19,12 @@ export interface LandingPage {
   faq?: Section;
   cta?: Section;
   footer?: Footer;
+}
+
+export interface PricingPage {
+  pricing?: Pricing;
+}
+
+export interface ShowcasePage {
+  showcase?: Section;
 }
