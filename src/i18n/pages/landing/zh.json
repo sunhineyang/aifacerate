@@ -30,13 +30,6 @@
       ]
     },
     "buttons": [
-      {
-        "title": "获取 ShipAny",
-        "url": "https://shipany.ai",
-        "target": "_blank",
-        "variant": "link",
-        "icon": "RiArrowRightUpLine"
-      }
     ],
     "show_sign": true,
     "show_theme": true,
