@@ -15,24 +15,24 @@
 
 ## File Structure
 
-- app/: Next.js App Router pages and API routes
+- src/app/: Next.js App Router pages and API routes
   - [locale]/: Locale-specific pages
   - api/: API routes (e.g. checkout)
   - theme.css: Theme styles
-- components/: React components
+- src/components/: React components
   - blocks/: Layout blocks (header, footer, etc.), commonly used in Landing Page
   - ui/: Reusable UI components
-- contexts/: React contexts (e.g. app context)
-- i18n/: Internationalization
+- src/contexts/: React contexts (e.g. app context)
+- src/i18n/: Internationalization
   - pages/landing/: Page-specific translations for Landing Page
   - messages/: Global messages
-- types/: TypeScript type definitions
+- src/types/: TypeScript type definitions
   - blocks/: Types for layout blocks
   - pages/: Types for pages
-- models/: Data models and data operations.
-- services/: Business logics.
+- src/models/: Data models and data operations.
+- src/services/: Business logics.
+- src/lib/: Custom libraries and functions
 - public/: Static assets
-- lib/: Custom libraries and functions
 - .env.development: Development environment variables
 
 ## Coding Conventions
