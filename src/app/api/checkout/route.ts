@@ -43,14 +43,22 @@ export async function POST(req: Request) {
     const item = page.pricing.items.find(
       (item: PricingItem) => item.product_id === product_id
     );
+
+    let isPriceValid = false;
+
+    if (currency === "cny") {
+      isPriceValid = item?.cn_amount === amount;
+    } else {
+      isPriceValid = item?.amount === amount && item?.currency === currency;
+    }
+
     if (
       !item ||
       !item.amount ||
       !item.interval ||
       !item.currency ||
-      item.amount !== amount ||
       item.interval !== interval ||
-      item.currency !== currency
+      !isPriceValid
     ) {
       return respErr("invalid checkout params");
     }

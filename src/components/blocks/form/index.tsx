@@ -23,12 +23,11 @@ import Icon from "@/components/icon";
 import { Input } from "@/components/ui/input";
 import { Loader } from "lucide-react";
 import MarkdownEditor from "@/components/blocks/mdeditor";
-import Editor from "@/components/blocks/editor";
 
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { useForm } from "react-hook-form";
-import { useRouter } from "@/i18n/routing";
+import { useRouter } from "@/i18n/navigation";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -194,7 +193,10 @@ export default function ({
                       />
                     ) : item.type === "editor" ||
                       item.type === "richtext_editor" ? (
-                      <Editor value={field.value} onChange={field.onChange} />
+                      <MarkdownEditor
+                        value={field.value}
+                        onChange={field.onChange}
+                      />
                     ) : (
                       <Input
                         {...field}

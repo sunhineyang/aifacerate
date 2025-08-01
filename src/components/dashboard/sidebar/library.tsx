@@ -25,7 +25,7 @@ import {
 } from "@/components/ui/sidebar";
 import { Library as LibraryType } from "@/types/blocks/base";
 import Icon from "@/components/icon";
-import { Link, usePathname } from "@/i18n/routing";
+import { Link, usePathname } from "@/i18n/navigation";
 
 export function Library({ library }: { library: LibraryType }) {
   const { isMobile } = useSidebar();

@@ -29,16 +29,16 @@ pnpm dev
 - Set your environment variables
 
 ```bash
-cp .env.example .env.local
+cp .env.example .env.development
 ```
 
-- Set your theme in `app/theme.css`
+- Set your theme in `src/app/theme.css`
 
-[shadcn-ui-theme-generator](https://zippystarter.com/tools/shadcn-ui-theme-generator)
+[tweakcn](https://tweakcn.com/editor/theme)
 
-- Set your landing page content in `i18n/pages/landing`
+- Set your landing page content in `src/i18n/pages/landing`
 
-- Set your i18n messages in `i18n/messages`
+- Set your i18n messages in `src/i18n/messages`
 
 ## Deploy
 
@@ -47,6 +47,18 @@ cp .env.example .env.local
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fshipanyai%2Fshipany-template-one&project-name=my-shipany-project&repository-name=my-shipany-project&redirect-url=https%3A%2F%2Fshipany.ai&demo-title=ShipAny&demo-description=Ship%20Any%20AI%20Startup%20in%20hours%2C%20not%20days&demo-url=https%3A%2F%2Fshipany.ai&demo-image=https%3A%2F%2Fpbs.twimg.com%2Fmedia%2FGgGSW3La8AAGJgU%3Fformat%3Djpg%26name%3Dlarge)
 
 - Deploy to Cloudflare
+
+for new project, clone with branch "cloudflare"
+
+```shell
+git clone -b cloudflare https://github.com/shipanyai/shipany-template-one.git
+```
+
+for exist project, checkout to branch "cloudflare"
+
+```shell
+git checkout cloudflare
+```
 
 1. Customize your environment variables
 
@@ -69,7 +81,6 @@ npm run cf:deploy
 
 - [ShipAny](https://shipany.ai)
 - [Documentation](https://docs.shipany.ai)
-- [Discord](https://discord.gg/HQNnrzjZQS)
 
 ## License
 
