@@ -48,7 +48,12 @@
       "amount": "Amount",
       "paid_at": "Paid At",
       "github_username": "GitHub Username",
-      "status": "Status"
+      "status": "Status",
+      "manage_billing": "Manage Billing",
+      "interval": "Interval",
+      "interval_month": "Monthly",
+      "interval_year": "Annually",
+      "interval_one_time": "One-Time"
     }
   },
   "my_credits": {
@@ -61,7 +66,9 @@
       "trans_type": "Trans Type",
       "credits": "Credits",
       "updated_at": "Updated At",
-      "status": "Status"
+      "status": "Status",
+      "expired_at": "Expired At",
+      "created_at": "Created At"
     }
   },
   "api_keys": {

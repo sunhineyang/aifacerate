@@ -27,7 +27,7 @@ export default function Testimonial({ section }: { section: SectionType }) {
   );
 
   return (
-    <section id={section.name} className="py-16">
+    <section id={section.name} className="container py-16">
       <div className="flex flex-col items-center gap-4">
         {section.label && (
           <div className="flex items-center gap-1 text-sm font-semibold text-primary">

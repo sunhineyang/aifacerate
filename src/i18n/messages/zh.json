@@ -48,7 +48,12 @@
       "amount": "金额",
       "paid_at": "支付时间",
       "github_username": "GitHub 用户名",
-      "status": "状态"
+      "status": "状态",
+      "manage_billing": "管理账单",
+      "interval": "周期",
+      "interval_month": "月付",
+      "interval_year": "年付",
+      "interval_one_time": "一次性"
     }
   },
   "my_credits": {
@@ -61,7 +66,9 @@
       "trans_type": "交易类型",
       "credits": "积分",
       "updated_at": "更新时间",
-      "status": "状态"
+      "status": "状态",
+      "expired_at": "过期时间",
+      "created_at": "创建时间"
     }
   },
   "api_keys": {

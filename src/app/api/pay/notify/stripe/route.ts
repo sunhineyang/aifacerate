@@ -1,6 +1,6 @@
 import Stripe from "stripe";
-import { handleOrderSession } from "@/services/order";
 import { respOk } from "@/lib/resp";
+import { handleCheckoutSession, handleInvoice } from "@/services/stripe";
 
 export async function POST(req: Request) {
   try {
@@ -29,9 +29,16 @@ export async function POST(req: Request) {
 
     switch (event.type) {
       case "checkout.session.completed": {
+        // get checkout session
         const session = event.data.object;
+        await handleCheckoutSession(stripe, session);
+        break;
+      }
 
-        await handleOrderSession(session);
+      case "invoice.payment_succeeded": {
+        // get invoice
+        const invoice = event.data.object;
+        await handleInvoice(stripe, invoice);
         break;
       }
 

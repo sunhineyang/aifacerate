@@ -1,55 +1,38 @@
 "use client";
 
-import Analytics from "@/components/analytics";
-import { CacheKey } from "@/services/constant";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { ReactNode, useEffect } from "react";
+import { useLocale } from "next-intl";
+import { Toaster } from "sonner";
+import { isAuthEnabled } from "@/lib/auth";
 import SignModal from "@/components/sign/modal";
-import type { ThemeProviderProps } from "next-themes";
-import { Toaster } from "@/components/ui/sonner";
-import { cacheGet } from "@/lib/cache";
-import { useAppContext } from "@/contexts/app";
-import { useEffect } from "react";
+import Analytics from "@/components/analytics";
+import Adsense from "./adsense";
 
-export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-  const { theme, setTheme } = useAppContext();
+export function ThemeProvider({ children }: { children: ReactNode }) {
+  const locale = useLocale();
 
   useEffect(() => {
-    const themeInCache = cacheGet(CacheKey.Theme);
-    if (themeInCache) {
-      // theme setted
-      if (["dark", "light"].includes(themeInCache)) {
-        setTheme(themeInCache);
-        return;
-      }
-    } else {
-      // theme not set
-      const defaultTheme = process.env.NEXT_PUBLIC_DEFAULT_THEME;
-      if (defaultTheme && ["dark", "light"].includes(defaultTheme)) {
-        setTheme(defaultTheme);
-        return;
-      }
+    if (typeof window !== "undefined") {
+      document.documentElement.lang = locale;
     }
-
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    setTheme(mediaQuery.matches ? "dark" : "light");
-
-    const handleChange = () => {
-      setTheme(mediaQuery.matches ? "dark" : "light");
-    };
-    mediaQuery.addListener(handleChange);
-
-    return () => {
-      mediaQuery.removeListener(handleChange);
-    };
-  }, []);
+  }, [locale]);
 
   return (
-    <NextThemesProvider forcedTheme={theme} {...props}>
+    <NextThemesProvider
+      attribute="class"
+      defaultTheme={process.env.NEXT_PUBLIC_DEFAULT_THEME || "system"}
+      enableSystem
+      disableTransitionOnChange
+    >
       {children}
 
       <Toaster position="top-center" richColors />
-      <SignModal />
       <Analytics />
+
+      {isAuthEnabled() && <SignModal />}
+
+      <Adsense />
     </NextThemesProvider>
   );
 }

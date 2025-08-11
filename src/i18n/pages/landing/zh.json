@@ -26,6 +26,11 @@
           "title": "案例展示",
           "url": "/showcase",
           "icon": "RiApps2Line"
+        },
+        {
+          "title": "文档",
+          "url": "/docs",
+          "icon": "RiBookOpenLine"
         }
       ]
     },
@@ -49,21 +54,21 @@
     "announcement": {
       "label": "2025",
       "title": "🎉 新年快乐",
-      "url": "/#pricing"
+      "url": "/pricing"
     },
     "tip": "🎁 2025年前五折优惠",
     "buttons": [
       {
         "title": "立即开始",
         "icon": "RiFlashlightFill",
-        "url": "/#pricing",
+        "url": "/pricing",
         "target": "_self",
         "variant": "default"
       },
       {
-        "title": "加入 Discord",
-        "icon": "RiDiscordFill",
-        "url": "https://discord.gg/HQNnrzjZQS",
+        "title": "阅读文档",
+        "icon": "RiBookOpenLine",
+        "url": "https://docs.shipany.ai",
         "target": "_blank",
         "variant": "outline"
       }

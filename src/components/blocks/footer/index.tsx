@@ -1,5 +1,6 @@
 import { Footer as FooterType } from "@/types/blocks/footer";
 import Icon from "@/components/icon";
+import { Link } from "@/i18n/navigation";
 
 export default function Footer({ footer }: { footer: FooterType }) {
   if (footer.disabled) {
@@ -39,7 +40,7 @@ export default function Footer({ footer }: { footer: FooterType }) {
                 <ul className="flex items-center space-x-6 text-muted-foreground">
                   {footer.social.items?.map((item, i) => (
                     <li key={i} className="font-medium hover:text-primary">
-                      <a href={item.url} target={item.target}>
+                      <a href={item.url || ""} target={item.target}>
                         {item.icon && (
                           <Icon name={item.icon} className="size-4" />
                         )}
@@ -56,9 +57,9 @@ export default function Footer({ footer }: { footer: FooterType }) {
                   <ul className="space-y-4 text-sm text-muted-foreground">
                     {item.children?.map((iitem, ii) => (
                       <li key={ii} className="font-medium hover:text-primary">
-                        <a href={iitem.url} target={iitem.target}>
+                        <Link href={iitem.url || ""} target={iitem.target}>
                           {iitem.title}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -86,7 +87,7 @@ export default function Footer({ footer }: { footer: FooterType }) {
               <ul className="flex justify-center gap-4 lg:justify-start">
                 {footer.agreement.items?.map((item, i) => (
                   <li key={i} className="hover:text-primary">
-                    <a href={item.url} target={item.target}>
+                    <a href={item.url || ""} target={item.target}>
                       {item.title}
                     </a>
                   </li>

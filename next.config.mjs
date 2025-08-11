@@ -1,19 +1,14 @@
 import bundleAnalyzer from "@next/bundle-analyzer";
 import createNextIntlPlugin from "next-intl/plugin";
-import mdx from "@next/mdx";
+import { createMDX } from "fumadocs-mdx/next";
+
+const withMDX = createMDX();
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
 
 const withNextIntl = createNextIntlPlugin();
-
-const withMDX = mdx({
-  options: {
-    remarkPlugins: [],
-    rehypePlugins: [],
-  },
-});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

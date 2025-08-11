@@ -5,6 +5,13 @@ import { desc, eq, and, gte, asc } from "drizzle-orm";
 export async function insertCredit(
   data: typeof credits.$inferInsert
 ): Promise<typeof credits.$inferSelect | undefined> {
+  if (data.created_at && typeof data.created_at === "string") {
+    data.created_at = new Date(data.created_at);
+  }
+  if (data.expired_at && typeof data.expired_at === "string") {
+    data.expired_at = new Date(data.expired_at);
+  }
+
   const [credit] = await db().insert(credits).values(data).returning();
 
   return credit;

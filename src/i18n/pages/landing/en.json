@@ -26,6 +26,11 @@
           "title": "Showcase",
           "url": "/showcase",
           "icon": "RiApps2Line"
+        },
+        {
+          "title": "Docs",
+          "url": "/docs",
+          "icon": "RiBookOpenLine"
         }
       ]
     },
@@ -49,21 +54,21 @@
     "announcement": {
       "label": "2025",
       "title": "🎉 Happy New Year",
-      "url": "/#pricing"
+      "url": "/pricing"
     },
     "tip": "🎁 50% off before 2025",
     "buttons": [
       {
         "title": "Get Started",
         "icon": "RiFlashlightFill",
-        "url": "/#pricing",
+        "url": "/pricing",
         "target": "_self",
         "variant": "default"
       },
       {
-        "title": "Join Discord",
-        "icon": "RiDiscordFill",
-        "url": "https://discord.gg/HQNnrzjZQS",
+        "title": "Read Document",
+        "icon": "RiBookOpenLine",
+        "url": "https://docs.shipany.ai",
         "target": "_blank",
         "variant": "outline"
       }

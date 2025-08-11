@@ -1,12 +1,17 @@
 import SignForm from "@/components/sign/form";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
+import { isAuthEnabled } from "@/lib/auth";
 
 export default async function SignInPage({
   searchParams,
 }: {
   searchParams: Promise<{ callbackUrl: string | undefined }>;
 }) {
+  if (!isAuthEnabled()) {
+    return redirect("/");
+  }
+
   const { callbackUrl } = await searchParams;
   const session = await auth();
   if (session) {

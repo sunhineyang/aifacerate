@@ -5,6 +5,7 @@ export interface PricingGroup {
   title?: string;
   description?: string;
   label?: string;
+  is_featured?: boolean;
 }
 
 export interface PricingItem {

@@ -9,18 +9,25 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/icon";
 import { Label } from "@/components/ui/label";
-import { loadStripe } from "@stripe/stripe-js";
 import { toast } from "sonner";
 import { useAppContext } from "@/contexts/app";
+import { useLocale } from "next-intl";
 
 export default function Pricing({ pricing }: { pricing: PricingType }) {
   if (pricing.disabled) {
     return null;
   }
 
+  const locale = useLocale();
+
   const { user, setShowSignModal } = useAppContext();
 
-  const [group, setGroup] = useState(pricing.groups?.[0]?.name);
+  const [group, setGroup] = useState(() => {
+    // First look for a group with is_featured set to true
+    const featuredGroup = pricing.groups?.find((g) => g.is_featured);
+    // If no featured group exists, fall back to the first group
+    return featuredGroup?.name || pricing.groups?.[0]?.name;
+  });
   const [isLoading, setIsLoading] = useState(false);
   const [productId, setProductId] = useState<string | null>(null);
 
@@ -33,12 +40,8 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
 
       const params = {
         product_id: item.product_id,
-        product_name: item.product_name,
-        credits: item.credits,
-        interval: item.interval,
-        amount: cn_pay ? item.cn_amount : item.amount,
         currency: cn_pay ? "cny" : item.currency,
-        valid_months: item.valid_months,
+        locale: locale || "en",
       };
 
       setIsLoading(true);
@@ -66,21 +69,13 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
         return;
       }
 
-      const { public_key, session_id } = data;
-
-      const stripe = await loadStripe(public_key);
-      if (!stripe) {
+      const { checkout_url } = data;
+      if (!checkout_url) {
         toast.error("checkout failed");
         return;
       }
 
-      const result = await stripe.redirectToCheckout({
-        sessionId: session_id,
-      });
-
-      if (result.error) {
-        toast.error(result.error.message);
-      }
+      window.location.href = checkout_url;
     } catch (e) {
       console.log("checkout failed: ", e);
 
@@ -93,8 +88,8 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
 
   useEffect(() => {
     if (pricing.items) {
-      setGroup(pricing.items[0].group);
-      setProductId(pricing.items[0].product_id);
+      const featuredItem = pricing.items.find((i) => i.is_featured);
+      setProductId(featuredItem?.product_id || pricing.items[0]?.product_id);
       setIsLoading(false);
     }
   }, [pricing.items]);
@@ -110,7 +105,7 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
             {pricing.description}
           </p>
         </div>
-        <div className="w-full flex flex-col items-center gap-2">
+        <div className="w-full flex flex-col items-center gap-1">
           {pricing.groups && pricing.groups.length > 0 && (
             <div className="flex h-12 mb-12 items-center rounded-md bg-muted p-1 text-lg">
               <RadioGroup
@@ -133,7 +128,7 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
                       />
                       <Label
                         htmlFor={item.name}
-                        className="flex h-full cursor-pointer items-center justify-center px-7 font-semibold text-muted-foreground peer-data-[state=checked]:text-primary"
+                        className="flex h-full cursor-pointer items-center justify-center px-4 font-semibold text-muted-foreground peer-data-[state=checked]:text-primary"
                       >
                         {item.title}
                         {item.label && (

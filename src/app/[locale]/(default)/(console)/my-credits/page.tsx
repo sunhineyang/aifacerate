@@ -51,10 +51,23 @@ export default async function () {
         name: "credits",
       },
       {
-        title: t("my_credits.table.updated_at"),
+        title: t("my_credits.table.created_at"),
         name: "created_at",
         callback: (v: any) => {
           return moment(v.created_at).format("YYYY-MM-DD HH:mm:ss");
+        },
+      },
+      {
+        title: t("my_credits.table.expired_at"),
+        name: "expired_at",
+        callback: (v: any) => {
+          if (!v.expired_at) {
+            return "-";
+          }
+
+          const t = moment(v.expired_at);
+
+          return `${t.format("YYYY-MM-DD HH:mm:ss")} (${t.fromNow()})`;
         },
       },
     ],

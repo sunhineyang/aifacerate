@@ -45,9 +45,7 @@ export default async function LocaleLayout({
     <NextIntlClientProvider messages={messages}>
       <NextAuthSessionProvider>
         <AppContextProvider>
-          <ThemeProvider attribute="class" disableTransitionOnChange>
-            {children}
-          </ThemeProvider>
+          <ThemeProvider>{children}</ThemeProvider>
         </AppContextProvider>
       </NextAuthSessionProvider>
     </NextIntlClientProvider>

@@ -10,6 +10,16 @@ export enum OrderStatus {
 }
 
 export async function insertOrder(data: typeof orders.$inferInsert) {
+  if (data.created_at && typeof data.created_at === "string") {
+    data.created_at = new Date(data.created_at);
+  }
+  if (data.expired_at && typeof data.expired_at === "string") {
+    data.expired_at = new Date(data.expired_at);
+  }
+  if (data.paid_at && typeof data.paid_at === "string") {
+    data.paid_at = new Date(data.paid_at);
+  }
+
   const [order] = await db().insert(orders).values(data).returning();
 
   return order;
