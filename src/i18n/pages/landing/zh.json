@@ -3,165 +3,131 @@
   "theme": "light",
   "header": {
     "brand": {
-      "title": "ShipAny",
+      "title": "FaceRate AI",
       "logo": {
         "src": "/logo.png",
-        "alt": "ShipAny"
+        "alt": "FaceRate AI - AI颜值评分吸引力测试标志",
+        "title": "FaceRate AI - 先进的AI颜值评分和美丽评分分析平台"
       },
       "url": "/"
     },
     "nav": {
       "items": [
         {
-          "title": "功能特点",
-          "url": "/#feature",
+          "title": "AI颜值评分",
+          "url": "/#facerate",
           "icon": "RiSparkling2Line"
-        },
-        {
-          "title": "定价",
-          "url": "/pricing",
-          "icon": "RiMoneyDollarCircleLine"
-        },
-        {
-          "title": "案例展示",
-          "url": "/showcase",
-          "icon": "RiApps2Line"
-        },
-        {
-          "title": "文档",
-          "url": "/docs",
-          "icon": "RiBookOpenLine"
         }
       ]
     },
-    "buttons": [
-      {
-        "title": "获取 ShipAny",
-        "url": "https://shipany.ai",
-        "target": "_blank",
-        "variant": "link",
-        "icon": "RiArrowRightUpLine"
-      }
-    ],
-    "show_sign": true,
+    "show_sign": false,
     "show_theme": true,
     "show_locale": true
   },
   "hero": {
-    "title": "几小时内快速构建 AI 创业项目，而不是几天",
-    "highlight_text": "快速构建",
-    "description": "ShipAny 是一个用于构建 AI SaaS 创业项目的 NextJS 模板。<br/>通过丰富的模板和组件快速启动。",
-    "announcement": {
-      "label": "2025",
-      "title": "🎉 新年快乐",
-      "url": "/pricing"
-    },
-    "tip": "🎁 2025年前五折优惠",
-    "buttons": [
-      {
-        "title": "立即开始",
-        "icon": "RiFlashlightFill",
-        "url": "/pricing",
-        "target": "_self",
-        "variant": "default"
-      },
-      {
-        "title": "阅读文档",
-        "icon": "RiBookOpenLine",
-        "url": "https://docs.shipany.ai",
-        "target": "_blank",
-        "variant": "outline"
-      }
-    ],
-    "show_happy_users": true,
+    "title": "用AI颜值评分测试您的真实吸引力",
+    "highlight_text": "AI颜值评分",
+    "description": "通过AI颜值评分技术发现您的真实美丽评分。为您提供客观、数据驱动的吸引力洞察。",
+    "show_happy_users": false,
     "show_badge": false
   },
   "branding": {
-    "title": "ShipAny 建立在巨人的肩膀上",
+    "title": "ShipAny建立在巨人的肩膀上",
     "items": [
       {
         "title": "Next.js",
         "image": {
           "src": "/imgs/logos/nextjs.svg",
-          "alt": "Next.js"
+          "alt": "Next.js - 用于AI颜值评分网页应用的React框架",
+          "title": "Next.js框架 - 驱动FaceRate AI SaaS平台"
         }
       },
       {
         "title": "React",
         "image": {
           "src": "/imgs/logos/react.svg",
-          "alt": "React"
+          "alt": "React - 用于AI颜值评分界面的JavaScript库",
+          "title": "React库 - 构建交互式AI吸引力测试用户界面"
         }
       },
       {
         "title": "TailwindCSS",
         "image": {
           "src": "/imgs/logos/tailwindcss.svg",
-          "alt": "TailwindCSS"
+          "alt": "TailwindCSS - AI颜值评分平台的样式框架",
+          "title": "TailwindCSS - FaceRate AI SaaS应用的现代样式"
         }
       },
       {
         "title": "Shadcn/UI",
         "image": {
           "src": "/imgs/logos/shadcn.svg",
-          "alt": "Shadcn/UI"
+          "alt": "Shadcn/UI - AI吸引力测试界面的组件库",
+          "title": "Shadcn/UI组件 - 增强FaceRate AI用户体验"
         }
       },
       {
         "title": "Vercel",
         "image": {
           "src": "/imgs/logos/vercel.svg",
-          "alt": "Vercel"
+          "alt": "Vercel - AI颜值评分部署的云平台",
+          "title": "Vercel平台 - 托管FaceRate AI SaaS应用"
         }
       }
     ]
   },
   "introduce": {
     "name": "introduce",
-    "title": "什么是 ShipAny",
-    "label": "介绍",
-    "description": "ShipAny 是一个用于构建 AI SaaS 创业项目的 NextJS 模板，内置多种模板和组件。",
+    "title": "通过我们的AI颜值评分系统释放您的面部潜力",
+    "label": "工作原理",
+    "description": "体验我们的AI颜值评分技术 - 一个由先进算法驱动的复杂吸引力测试，该算法在数百万张面孔上进行训练。我们的系统使用黄金比例、对称性和关键比例分析您独特的面部特征，提供客观、数据驱动的吸引力反馈。通过我们简化的AI颜值评分流程获得准确洞察，该流程将精确性与易用性相结合。",
     "image": {
-      "src": "/imgs/features/1.png"
+      "src": "/imgs/features/1.png",
+      "alt": "AI颜值评分分析流程 - 我们的吸引力测试如何工作",
+      "title": "FaceRate AI技术 - 先进的面部美丽评分分析系统"
     },
     "items": [
       {
-        "title": "即用型模板",
-        "description": "从数十个生产就绪的 AI SaaS 模板中选择，快速启动您的项目。",
-        "icon": "RiNextjsFill"
+        "title": "安全照片上传",
+        "description": "只需上传一张清晰的正面照片。我们的系统是安全的，您的隐私是我们的首要任务。您个人吸引力测试的第一步快速、简单且保密。",
+        "icon": "RiUploadCloud2Line"
       },
       {
-        "title": "基础设施配置",
-        "description": "立即获取内置最佳实践的可扩展基础设施。",
-        "icon": "RiDatabase2Line"
+        "title": "深度AI分析",
+        "description": "我们强大的AI颜值评分引擎处理您的图像，检测200多个关键面部标志点，实时测量数十个参数。这是我们先进吸引力测试的核心。",
+        "icon": "RiScan2Line"
       },
       {
-        "title": "快速部署",
-        "description": "在几小时内将您的 AI SaaS 应用部署到生产环境，而不是几天。",
-        "icon": "RiCloudyFill"
+        "title": "即时详细报告",
+        "description": "获得您的综合评分以及面部特征的详细分解。了解您的优势，获得对您独特美丽的新视角。",
+        "icon": "RiFileChartLine"
       }
     ]
   },
   "benefit": {
     "name": "benefit",
-    "title": "为什么选择 ShipAny",
+    "title": "为什么选择ShipAny",
     "label": "优势",
-    "description": "获取启动 AI 创业所需的一切 - 从即用型模板到技术支持。",
+    "description": "获取启动AI创业所需的一切 - 从即用型模板到技术支持。",
     "items": [
       {
         "title": "完整框架",
-        "description": "基于 Next.js 构建，集成身份验证、支付和 AI 功能 - 一切开箱即用。",
+        "description": "基于Next.js构建，集成身份验证、支付和AI功能 - 一切开箱即用。",
         "icon": "RiNextjsFill",
         "image": {
-          "src": "/imgs/features/2.png"
+          "src": "/imgs/features/2.png",
+          "alt": "完整AI SaaS框架 - ShipAny颜值评分应用平台",
+          "title": "ShipAny框架 - 轻松构建AI颜值评分应用"
         }
       },
       {
         "title": "丰富的模板库",
-        "description": "选择各种 AI SaaS 模板来启动您的项目 - 聊天机器人、图像生成等。",
+        "description": "选择各种AI SaaS模板来启动您的项目 - 聊天机器人、图像生成等。",
         "icon": "RiClapperboardAiLine",
         "image": {
-          "src": "/imgs/features/3.png"
+          "src": "/imgs/features/3.png",
+          "alt": "AI SaaS模板库 - 即用型颜值评分解决方案",
+          "title": "ShipAny模板 - 预构建AI吸引力测试组件"
         }
       },
       {
@@ -169,15 +135,17 @@
         "description": "获得专门支持并加入我们的开发者社区，确保您成功启动。",
         "icon": "RiCodeFill",
         "image": {
-          "src": "/imgs/features/4.png"
+          "src": "/imgs/features/4.png",
+          "alt": "AI颜值评分开发技术支持 - 专家指导",
+          "title": "ShipAny支持 - AI SaaS开发专业帮助"
         }
       }
     ]
   },
   "usage": {
     "name": "usage",
-    "title": "如何使用 ShipAny 启动项目",
-    "description": "通过三个简单步骤启动您的 AI SaaS 创业项目：",
+    "title": "不仅仅是评分：人们如何使用AI颜值评分",
+    "description": "通过我们的AI颜值评分分析发现您独特的面部美学。获得关于您吸引力的数据支持洞察，学习如何优化您的外观。不再疑惑'我有吸引力吗？' - 通过我们先进的AI吸引力测试获得客观答案。",
     "image": {
       "src": "/imgs/features/1.png"
     },
@@ -185,68 +153,76 @@
     "text_align": "center",
     "items": [
       {
-        "title": "获取 ShipAny",
-        "description": "一次性付款购买 ShipAny。查收邮件获取代码和文档。",
+        "title": "准备您最佳的正面照片",
+        "description": "为了获得最准确的AI颜值评分分析，请使用光线良好的清晰正面照片。确保您的面部完全可见，无配饰，并保持中性表情以获得最佳效果。",
         "image": {
-          "src": "/imgs/features/5.png"
+          "src": "/imgs/features/5.png",
+          "alt": "上传照片步骤 - FaceRate AI颜值评分和美丽评分分析流程",
+          "title": "第一步：上传您的照片进行AI颜值评分和吸引力测试"
         }
       },
       {
-        "title": "开始您的项目",
-        "description": "阅读文档并克隆 ShipAny 代码。开始构建您的 AI SaaS 创业项目。",
+        "title": "快速上传和AI分析",
+        "description": "只需上传您的照片并点击'分析'。我们先进的AI颜值评分技术将立即处理您的图像，评估数百个面部特征以生成您的综合吸引力评分。",
         "image": {
-          "src": "/imgs/features/6.png"
+          "src": "/imgs/features/6.png",
+          "alt": "AI分析处理 - FaceRate AI面部特征分析和美丽评分",
+          "title": "第二步：AI分析处理进行颜值评分和美丽评分计算"
         }
       },
       {
-        "title": "定制您的项目",
-        "description": "使用您的数据和内容修改模板。满足特定的 AI 功能需求。",
+        "title": "获得详细评分报告",
+        "description": "获得面部特征的详细分解，包括对称性分析、黄金比例测量，以及关于您独特面部特征的个性化洞察。",
         "image": {
-          "src": "/imgs/features/7.png"
+          "src": "/imgs/features/7.png",
+          "alt": "美丽评分结果 - FaceRate AI吸引力评分和面部分析报告",
+          "title": "第三步：获取您的美丽评分和吸引力分析结果"
         }
       },
       {
-        "title": "部署到生产环境",
-        "description": "通过几个步骤将项目部署到生产环境，立即开始服务客户。",
+        "title": "全球分享您的结果",
+        "description": "下载您的AI颜值评分结果并与全球社区分享。将您的评分与世界各地的其他人进行比较，看看您在不同地区和人群中的排名。",
         "image": {
-          "src": "/imgs/features/8.png"
+          "src": "/imgs/features/8.png",
+          "alt": "分享结果 - FaceRate AI美丽评分分享和社交比较功能",
+          "title": "第四步：分享您的颜值评分结果并与朋友比较"
         }
       }
     ]
   },
   "feature": {
     "name": "feature",
-    "title": "ShipAny 核心功能",
-    "description": "快速高效启动 AI SaaS 创业所需的一切。",
+    "title": "ShipAny核心功能",
+    "description": "快速高效启动AI SaaS创业所需的一切。",
     "items": [
       {
-        "title": "Next.js 模板",
-        "description": "生产就绪的 Next.js 模板，支持 SEO 友好结构和国际化。",
+        "title": "Next.js模板",
+        "description": "生产就绪的Next.js模板，支持SEO友好结构和国际化。",
         "icon": "RiNextjsFill"
       },
       {
         "title": "身份验证和支付",
-        "description": "集成 Google OAuth、一键登录和 Stripe 支付处理。",
+        "description": "集成Google OAuth、一键登录和Stripe支付处理。",
         "icon": "RiKey2Fill"
       },
       {
         "title": "数据基础设施",
-        "description": "内置 Supabase 集成，提供可靠和可扩展的数据存储。",
+        "description": "内置Supabase集成，提供可靠和可扩展的数据存储。",
         "icon": "RiDatabase2Line"
       },
       {
         "title": "一键部署",
-        "description": "无缝部署到 Vercel 或 Cloudflare，自动化设置。",
+        "description": "无缝部署到Vercel或Cloudflare，自动化设置。",
         "icon": "RiCloudy2Fill"
       },
       {
         "title": "业务分析",
-        "description": "集成 Google Analytics 和 Search Console 追踪增长。",
+        "description": "集成Google Analytics和Search Console追踪增长。",
         "icon": "RiBarChart2Line"
       },
       {
-        "title": "AI 就绪基础设施",
-        "description": "预配置 AI 集成，内置积分系统和 API 销售。",
+        "title": "AI就绪基础设施",
+        "description": "预配置AI集成，内置积分系统和API销售。",
         "icon": "RiRobot2Line"
       }
     ]
@@ -254,7 +230,7 @@
   "stats": {
     "name": "stats",
     "label": "统计",
-    "title": "用户喜爱 ShipAny",
+    "title": "用户喜爱ShipAny",
     "description": "因为它易于使用且快速发布。",
     "icon": "FaRegHeart",
     "items": [
@@ -278,108 +254,108 @@
   "testimonial": {
     "name": "testimonial",
     "label": "用户评价",
-    "title": "用户如何评价 ShipAny",
-    "description": "听听使用 ShipAny 启动 AI 创业项目的开发者和创始人怎么说。",
+    "title": "用户如何评价ShipAny",
+    "description": "听听使用ShipAny启动AI创业项目的开发者和创始人怎么说。",
     "icon": "GoThumbsup",
     "items": [
       {
-        "title": "陈大卫",
-        "label": "AIWallpaper.shop 创始人",
-        "description": "ShipAny 为我们节省了数月的开发时间。我们仅用 2 天就启动了 AI 壁纸业务，一周内就获得了第一个付费客户！",
-        "image": {
-          "src": "/imgs/users/1.png"
-        }
+        "name": "Sarah Johnson",
+        "role": "营销总监",
+        "content": "这个AI颜值评分工具彻底改变了我们对美丽标准的理解。准确性令人印象深刻！",
+        "rating": 5,
+        "src": "/imgs/users/1.png",
+        "alt": "Sarah Johnson - FaceRate AI用户推荐，吸引力测试和美丽评分分析",
+        "title": "Sarah Johnson推荐 - AI颜值评分美丽分析用户评价"
       },
       {
-        "title": "金瑞秋",
-        "label": "HeyBeauty.ai 技术总监",
-        "description": "预构建的 AI 基础设施是一个游戏规则改变者。我们无需担心架构 - 只需专注于 AI 美容技术并快速上线。",
-        "image": {
-          "src": "/imgs/users/2.png"
-        }
+        "name": "Michael Chen",
+        "role": "科技企业家",
+        "content": "FaceRate AI提供了令人难以置信的详细分析。它已成为我们美容科技初创公司的必备工具。",
+        "rating": 5,
+        "src": "/imgs/users/2.png",
+        "alt": "Michael Chen - FaceRate AI推荐，AI颜值评分和美丽评分技术",
+        "title": "Michael Chen评价 - AI吸引力测试和面部分析工具"
       },
       {
-        "title": "马库斯",
-        "label": "独立开发者",
-        "description": "作为独立开发者，ShipAny 给了我所需的一切 - 身份验证、支付、AI 集成和漂亮的 UI。一个周末就启动了我的 SaaS！",
-        "image": {
-          "src": "/imgs/users/3.png"
-        }
+        "name": "Emily Rodriguez",
+        "role": "社交媒体影响者",
+        "content": "美丽评分分析非常准确。这个AI吸引力测试帮助我理解什么让面孔更有吸引力。",
+        "rating": 5,
+        "src": "/imgs/users/3.png",
+        "alt": "Emily Rodriguez - AI吸引力测试用户推荐，FaceRate美丽分析",
+        "title": "Emily Rodriguez推荐 - AI颜值评分美丽评分和吸引力分析"
       },
       {
-        "title": "索菲亚",
-        "label": "Melodisco CEO",
-        "description": "这些模板可直接用于生产且高度可定制。我们用几小时而不是几个月就建立了 AI 音乐平台。上市时间令人难以置信！",
-        "image": {
-          "src": "/imgs/users/4.png"
-        }
+        "name": "David Kim",
+        "role": "UX设计师",
+        "content": "ShipAny的颜值评分技术具有开创性。AI分析为设计工作提供了宝贵的见解。",
+        "rating": 5,
+        "src": "/imgs/users/4.png",
+        "alt": "David Kim - ShipAny FaceRate AI用户推荐，颜值评分技术",
+        "title": "David Kim评价 - ShipAny AI面部分析和美丽评分技术"
       },
       {
-        "title": "詹姆斯",
-        "label": "GPTs.works 技术主管",
-        "description": "ShipAny 的基础设施非常稳固。我们从 0 扩展到 1 万用户都没碰后端。这是我们 AI 创业最好的投资。",
-        "image": {
-          "src": "/imgs/users/5.png"
-        }
+        "name": "Lisa Wang",
+        "role": "美容顾问",
+        "content": "这个AI颜值评分工具改变了我的咨询流程。客户喜欢详细的美丽分析。",
+        "rating": 5,
+        "src": "/imgs/users/5.png",
+        "alt": "Lisa Wang - FaceRate AI美容顾问推荐，颜值评分和吸引力分析",
+        "title": "Lisa Wang推荐 - AI颜值评分工具用于美容咨询和分析"
       },
       {
-        "title": "张安娜",
-        "label": "创业者",
-        "description": "从想法到上线只用了 3 天！ShipAny 的模板和部署工具让我们能够以令人难以置信的速度测试 AI 业务概念。",
-        "image": {
-          "src": "/imgs/users/6.png"
-        }
+        "name": "James Wilson",
+        "role": "产品经理",
+        "content": "FaceRate AI的吸引力评分非常复杂。这是美容技术的未来。",
+        "rating": 5,
+        "src": "/imgs/users/6.png",
+        "alt": "James Wilson - FaceRate AI产品经理推荐，吸引力评分技术",
+        "title": "James Wilson评价 - AI吸引力评分和颜值评分技术"
       }
     ]
   },
   "faq": {
     "name": "faq",
     "label": "常见问题",
-    "title": "关于 ShipAny 的常见问题",
-    "description": "还有其他问题？通过 Discord 或电子邮件联系我们。",
+    "title": "常见问题解答",
+    "description": "对我们的AI颜值评分服务有疑问？我们有答案。在下面了解更多关于我们独特的吸引力测试、背后的技术和我们的隐私政策。",
     "items": [
       {
-        "title": "ShipAny 究竟是什么，它是如何工作的？",
-        "description": "ShipAny 是一个专门为构建 AI SaaS 创业项目设计的综合性 NextJS 模板。它提供即用型模板、基础设施设置和部署工具，帮助您在几小时内而不是几天内启动 AI 业务。"
+        "title": "AI颜值评分实际上是如何工作的？",
+        "description": "我们的AI颜值评分系统使用一种称为卷积神经网络（CNN）的人工智能。它在一个庞大的、道德来源的面孔数据集上进行训练，这些面孔有不同的评分。当您上传照片时，AI检测关键面部标志点，测量它们之间的距离和比例，分析对称性，并将这些模式与训练期间学到的数据进行比较以生成评分。这是一个纯粹的数学和模式识别过程。"
       },
       {
-        "title": "使用 ShipAny 需要高级技术技能吗？",
-        "description": "虽然基本的编程知识会有帮助，但 ShipAny 设计得非常开发者友好。我们的模板和文档使您即使不是 AI 或云基础设施专家也能轻松入门。"
+        "title": "这个吸引力测试准确吗？",
+        "description": "我们的AI追求客观性和一致性，而不是主观真理。'吸引力'是高度主观的，并且依赖于文化。我们的AI颜值评分基于几何原理、对称性和从训练数据中学到的模式来测量美学品质。它提供一致的、数据驱动的评分，这是一个强大的指标，但应被视为对美丽的众多视角之一。准确性在于其一致性和无偏见的方法论。"
       },
       {
-        "title": "我可以用 ShipAny 构建什么类型的 AI SaaS？",
-        "description": "ShipAny 支持广泛的 AI 应用，从内容生成到数据分析工具。我们的模板涵盖流行用例，如 AI 聊天机器人、内容生成器、图像处理应用等。"
+        "title": "我的照片和数据安全吗？",
+        "description": "绝对安全。您的隐私是我们的首要任务。您的照片通过安全连接上传，在内存中处理，然后在生成您的AI颜值评分报告的那一刻从我们的服务器中永久删除。我们不存储、分享或出售您的照片或个人数据。整个吸引力测试过程是匿名和安全的。"
       },
       {
-        "title": "使用 ShipAny 通常需要多长时间才能启动？",
-        "description": "使用 ShipAny，您可以在几小时内完成工作原型，并在几小时内完成生产就绪的应用。我们的一键部署和预配置基础设施显著缩短了传统的数月开发周期。"
+        "title": "我的AI颜值评分报告包含什么信息？",
+        "description": "您的报告包括1-10分的整体吸引力评分。更重要的是，它提供了个别面部特征的详细分解，包括面部对称性、皮肤质量、下颌线、鼻子形状、眼睛大小和间距以及唇部体积的评分。这种细致的细节使我们的AI颜值评分成为真正有用的工具。"
       },
       {
-        "title": "ShipAny 的基础设施包括什么？",
-        "description": "ShipAny 提供完整的基础设施栈，包括身份验证、数据库设置、API 集成、支付处理和可扩展的云部署。一切都按照行业最佳实践预先配置。"
+        "title": "我能做些什么来提高我的AI颜值评分吗？",
+        "description": "虽然您的核心面部结构是遗传的，但一些因素可以影响您的AI颜值评分。这些包括照片质量（使用清晰、光线良好的正面照片）、仪容、护肤（影响皮肤清晰度评分）和表情。该工具可用于查看不同发型或角度如何影响您感知的面部和谐。我们的吸引力测试可以帮助您找到最佳展示方式。"
       },
       {
-        "title": "我可以自定义模板以匹配我的品牌吗？",
-        "description": "当然可以！所有 ShipAny 模板都完全可定制。您可以修改设计、功能和功能性以匹配您的品牌标识和特定业务需求，同时保持强大的底层基础设施。"
+        "title": "您的AI颜值评分与其他在线评分应用有何不同？",
+        "description": "许多其他应用基于简单的滤镜或同行投票，这是高度主观和有偏见的。我们的独特性在于我们复杂的AI、对隐私的承诺（照片删除）、详细的特征分解以及基于几何分析的基础。我们提供科学风格的吸引力测试，而不是人气竞赛。这使我们的AI颜值评分成为更可靠和私密的工具。"
       }
     ]
   },
   "cta": {
     "name": "cta",
-    "title": "启动您的第一个 AI SaaS 创业项目",
-    "description": "从这里开始，使用 ShipAny 启动。",
+    "title": "准备好看到您的评分了吗？立即获取您的AI颜值评分！",
+    "description": "停止疑惑，开始了解。在30秒内获得您的保密、数据驱动的吸引力测试。您的自我发现之旅只需一次点击。立即开始您的分析。",
     "buttons": [
       {
-        "title": "获取 ShipAny",
-        "url": "https://shipany.ai",
-        "target": "_blank",
+        "title": "开始免费吸引力测试",
+        "url": "#facerate",
+        "target": "_self",
         "icon": "GoArrowUpRight"
-      },
-      {
-        "title": "阅读文档",
-        "url": "https://docs.shipany.ai",
-        "target": "_blank",
-        "variant": "outline"
       }
     ]
   },
@@ -387,10 +363,11 @@
     "name": "footer",
     "brand": {
       "title": "ShipAny",
-      "description": "ShipAny 是一个用于构建 AI SaaS 创业项目的 NextJS 模板。通过丰富的模板和组件快速启动。",
+      "description": "ShipAny是一个用于构建AI SaaS创业项目的NextJS模板。通过各种模板和组件快速发布。",
       "logo": {
         "src": "/logo.png",
-        "alt": "ShipAny"
+        "alt": "FaceRate AI - AI颜值评分和美丽评分分析平台标志",
+        "title": "FaceRate AI标志 - AI吸引力测试和美丽分析SaaS平台"
       },
       "url": "/"
     },
@@ -401,59 +378,14 @@
           "title": "关于",
           "children": [
             {
-              "title": "功能特点",
+              "title": "如何使用",
               "url": "/#feature",
               "target": "_self"
             },
             {
-              "title": "案例展示",
-              "url": "/#showcase",
+              "title": "什么是AI颜值评分",
+              "url": "/#introduce",
               "target": "_self"
-            },
-            {
-              "title": "定价",
-              "url": "/#pricing",
-              "target": "_self"
-            }
-          ]
-        },
-        {
-          "title": "资源",
-          "children": [
-            {
-              "title": "文档",
-              "url": "https://docs.shipany.ai",
-              "target": "_blank"
-            },
-            {
-              "title": "组件",
-              "url": "https://shipany.ai/components",
-              "target": "_blank"
-            },
-            {
-              "title": "模板",
-              "url": "https://shipany.ai/templates",
-              "target": "_blank"
-            }
-          ]
-        },
-        {
-          "title": "友情链接",
-          "children": [
-            {
-              "title": "ThinkAny",
-              "url": "https://thinkany.ai",
-              "target": "_blank"
-            },
-            {
-              "title": "HeyBeauty",
-              "url": "https://heybeauty.ai",
-              "target": "_blank"
-            },
-            {
-              "title": "Pagen",
-              "url": "https://pagen.so",
-              "target": "_blank"
             }
           ]
         }
@@ -462,27 +394,9 @@
     "social": {
       "items": [
         {
-          "title": "X",
-          "icon": "RiTwitterXFill",
-          "url": "https://x.com/shipanyai",
-          "target": "_blank"
-        },
-        {
-          "title": "Github",
-          "icon": "RiGithubFill",
-          "url": "https://github.com/shipanyai",
-          "target": "_blank"
-        },
-        {
-          "title": "Discord",
-          "icon": "RiDiscordFill",
-          "url": "https://discord.gg/HQNnrzjZQS",
-          "target": "_blank"
-        },
-        {
           "title": "邮箱",
           "icon": "RiMailLine",
-          "url": "mailto:support@shipany.ai",
+          "url": "mailto:0992sunshine@gmail.com",
           "target": "_self"
         }
       ]

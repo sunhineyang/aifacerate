@@ -11,7 +11,7 @@ export default function Feature3({ section }: { section: SectionType }) {
   return (
     <section className="py-16">
       <div className="container px-8">
-        <div className="mb-16 max-w-xl px-8 lg:px-0">
+        <div className="mb-16 max-w-4xl mx-auto px-8 lg:px-0 text-center">
           {section.label && (
             <Badge variant="outline" className="mb-4">
               {section.label}
@@ -20,7 +20,7 @@ export default function Feature3({ section }: { section: SectionType }) {
           <h2 className="mb-6 text-pretty text-3xl font-bold lg:text-4xl">
             {section.title}
           </h2>
-          <p className="mb-4 max-w-xl text-muted-foreground lg:max-w-none lg:text-lg">
+          <p className="mb-4 max-w-3xl mx-auto text-muted-foreground lg:text-lg">
             {section.description}
           </p>
         </div>
@@ -49,42 +49,12 @@ export default function Feature3({ section }: { section: SectionType }) {
                         <p className="text-sm">{item.description}</p>
                       </div>
                     </div>
-                    {item.image && (
-                      <div className="mt-6 block border bg-muted/50 px-4 py-6 lg:hidden">
-                        <div className="aspect-video">
-                          <img
-                            src={item.image?.src}
-                            alt={item.image?.alt || item.title}
-                            className="h-full w-full rounded-md border object-cover shadow-sm"
-                          />
-                        </div>
-                      </div>
-                    )}
+
                   </TabsTrigger>
                 );
               })}
             </TabsList>
-            <div className="mt-8 hidden rounded-xl lg:block">
-              {section.items?.map((item, index) => {
-                if (!item.image) return null;
 
-                return (
-                  <TabsContent
-                    key={index}
-                    value={`tab-${index + 1}`}
-                    className="aspect-video"
-                  >
-                    {item.image && (
-                      <img
-                        src={item.image.src}
-                        alt={item.image.alt || item.title}
-                        className="h-full w-full rounded-xl border object-cover shadow-sm"
-                      />
-                    )}
-                  </TabsContent>
-                );
-              })}
-            </div>
           </Tabs>
         </div>
       </div>

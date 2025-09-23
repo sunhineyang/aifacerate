@@ -3,77 +3,32 @@
   "theme": "light",
   "header": {
     "brand": {
-      "title": "ShipAny",
+      "title": "FaceRate AI",
       "logo": {
         "src": "/logo.png",
-        "alt": "ShipAny"
+        "alt": "FaceRate AI - AI Face Rate Attractiveness Test Logo",
+        "title": "FaceRate AI - Advanced AI Face Rating and Beauty Score Analysis Platform"
       },
       "url": "/"
     },
     "nav": {
       "items": [
         {
-          "title": "Features",
-          "url": "/#feature",
+          "title": "AI Face Rate",
+          "url": "/#facerate",
           "icon": "RiSparkling2Line"
-        },
-        {
-          "title": "Pricing",
-          "url": "/pricing",
-          "icon": "RiMoneyDollarCircleLine"
-        },
-        {
-          "title": "Showcase",
-          "url": "/showcase",
-          "icon": "RiApps2Line"
-        },
-        {
-          "title": "Docs",
-          "url": "/docs",
-          "icon": "RiBookOpenLine"
         }
       ]
     },
-    "buttons": [
-      {
-        "title": "Get ShipAny",
-        "url": "https://shipany.ai",
-        "target": "_blank",
-        "variant": "link",
-        "icon": "RiArrowRightUpLine"
-      }
-    ],
-    "show_sign": true,
+    "show_sign": false,
     "show_theme": true,
-    "show_locale": true
+    "show_locale": false
   },
   "hero": {
-    "title": "Ship Any AI Startups in hours, not days",
-    "highlight_text": "Ship Any",
-    "description": "ShipAny is a NextJS boilerplate for building AI SaaS startups.<br/>Ship Fast with a variety of templates and components.",
-    "announcement": {
-      "label": "2025",
-      "title": "🎉 Happy New Year",
-      "url": "/pricing"
-    },
-    "tip": "🎁 50% off before 2025",
-    "buttons": [
-      {
-        "title": "Get Started",
-        "icon": "RiFlashlightFill",
-        "url": "/pricing",
-        "target": "_self",
-        "variant": "default"
-      },
-      {
-        "title": "Read Document",
-        "icon": "RiBookOpenLine",
-        "url": "https://docs.shipany.ai",
-        "target": "_blank",
-        "variant": "outline"
-      }
-    ],
-    "show_happy_users": true,
+    "title": "Test Your True Attractiveness with AI Face Rate",
+    "highlight_text": "AI Face Rate",
+    "description": "Discover your true beauty score with AI face rate technology. Give you objective, data-driven attractiveness insights.",
+    "show_happy_users": false,
     "show_badge": false
   },
   "branding": {
@@ -83,62 +38,69 @@
         "title": "Next.js",
         "image": {
           "src": "/imgs/logos/nextjs.svg",
-          "alt": "Next.js"
+          "alt": "Next.js - React Framework for AI Face Rate Web Application",
+          "title": "Next.js Framework - Powering FaceRate AI SaaS Platform"
         }
       },
       {
         "title": "React",
         "image": {
           "src": "/imgs/logos/react.svg",
-          "alt": "React"
+          "alt": "React - JavaScript Library for AI Face Rating Interface",
+          "title": "React Library - Building Interactive AI Attractiveness Test UI"
         }
       },
       {
         "title": "TailwindCSS",
         "image": {
           "src": "/imgs/logos/tailwindcss.svg",
-          "alt": "TailwindCSS"
+          "alt": "TailwindCSS - Styling Framework for AI Face Rate Platform",
+          "title": "TailwindCSS - Modern Styling for FaceRate AI SaaS Application"
         }
       },
       {
         "title": "Shadcn/UI",
         "image": {
           "src": "/imgs/logos/shadcn.svg",
-          "alt": "Shadcn/UI"
+          "alt": "Shadcn/UI - Component Library for AI Attractiveness Test Interface",
+          "title": "Shadcn/UI Components - Enhancing FaceRate AI User Experience"
         }
       },
       {
         "title": "Vercel",
         "image": {
           "src": "/imgs/logos/vercel.svg",
-          "alt": "Vercel"
+          "alt": "Vercel - Cloud Platform for AI Face Rate Deployment",
+          "title": "Vercel Platform - Hosting FaceRate AI SaaS Application"
         }
       }
     ]
   },
   "introduce": {
     "name": "introduce",
-    "title": "What is ShipAny",
-    "label": "Introduce",
-    "description": "ShipAny is a NextJS boilerplate for building AI SaaS startups. Built in a variety of templates and components.",
+    "title": "Unlock Your Facial Potential with Our AI Face Rate System",
+    "label": "HOW IT WORKS",
+    "description": "Experience our AI face rate technology - a sophisticated attractiveness test powered by advanced algorithms trained on millions of faces. Our system analyzes your unique facial features using the golden ratio, symmetry, and key proportions to provide objective, data-driven feedback about your attractiveness. Get accurate insights through our streamlined AI face rate process that combines precision with ease of use.",
     "image": {
-      "src": "/imgs/features/1.png"
+      "src": "/imgs/features/1.png",
+      "alt": "AI Face Rate Analysis Process - How Our Attractiveness Test Works",
+      "title": "FaceRate AI Technology - Advanced Facial Beauty Score Analysis System"
     },
     "items": [
       {
-        "title": "Ready-to-use Templates",
-        "description": "Choose from dozens of production-ready AI SaaS templates to quickly start your project.",
-        "icon": "RiNextjsFill"
+        "title": "Secure Photo Upload",
+        "description": "Simply upload a clear, front-facing photo. Our system is secure and your privacy is our top priority. The first step to your personal attractiveness test is quick, easy, and confidential.",
+        "icon": "RiUploadCloud2Line"
       },
       {
-        "title": "Infrastructure Setup",
-        "description": "Get instant access to scalable infrastructure with best practices built-in.",
-        "icon": "RiDatabase2Line"
+        "title": "Deep AI Analysis",
+        "description": "Our powerful AI face rate engine processes your image, detecting over 200 key facial landmarks and measuring dozens of parameters in real-time. This is the core of our advanced attractiveness test.",
+        "icon": "RiScan2Line"
       },
       {
-        "title": "Quick Deployment",
-        "description": "Deploy your AI SaaS application to production in hours, not days.",
-        "icon": "RiCloudyFill"
+        "title": "Instant Detailed Report",
+        "description": "Receive your comprehensive score along with a detailed breakdown of your facial features. Understand your strengths and get a new perspective on your unique beauty.",
+        "icon": "RiFileChartLine"
       }
     ]
   },
@@ -153,7 +115,9 @@
         "description": "Built on Next.js with authentication, payments, and AI integration - everything works out of the box.",
         "icon": "RiNextjsFill",
         "image": {
-          "src": "/imgs/features/2.png"
+          "src": "/imgs/features/2.png",
+          "alt": "Complete AI SaaS Framework - ShipAny Platform for Face Rating Apps",
+          "title": "ShipAny Framework - Building AI Face Rate Applications with Ease"
         }
       },
       {
@@ -161,7 +125,9 @@
         "description": "Choose from various AI SaaS templates to kickstart your project - chatbots, image generation, and more.",
         "icon": "RiClapperboardAiLine",
         "image": {
-          "src": "/imgs/features/3.png"
+          "src": "/imgs/features/3.png",
+          "alt": "AI SaaS Templates Library - Ready-to-Use Face Rating Solutions",
+          "title": "ShipAny Templates - Pre-built AI Attractiveness Test Components"
         }
       },
       {
@@ -169,15 +135,17 @@
         "description": "Get dedicated support and join our developer community to ensure your successful launch.",
         "icon": "RiCodeFill",
         "image": {
-          "src": "/imgs/features/4.png"
+          "src": "/imgs/features/4.png",
+          "alt": "Technical Support for AI Face Rate Development - Expert Guidance",
+          "title": "ShipAny Support - Professional Help for AI SaaS Development"
         }
       }
     ]
   },
   "usage": {
     "name": "usage",
-    "title": "How to Launch with ShipAny",
-    "description": "Get your AI SaaS startup running in three simple steps:",
+    "title": "More Than Just a Score: How People Use AI Face Rate",
+    "description": "Discover your unique facial aesthetics with our AI face rate analysis. Get data-backed insights about your attractiveness and learn how to optimize your appearance. Stop wondering 'am I attractive?' - get objective answers with our advanced AI attractiveness test.",
     "image": {
       "src": "/imgs/features/1.png"
     },
@@ -185,31 +153,39 @@
     "text_align": "center",
     "items": [
       {
-        "title": "Get ShipAny",
-        "description": "Buy ShipAny with a one-time payment. Check your email for the code and documentation.",
+        "title": "Prepare Your Best Front-Facing Photo",
+        "description": "For the most accurate AI face rate analysis, use a clear front-facing photo with good lighting. Ensure your face is fully visible without accessories, and maintain a neutral expression for optimal results.",
         "image": {
-          "src": "/imgs/features/5.png"
+          "src": "/imgs/features/5.png",
+          "alt": "Upload photo step - FaceRate AI face rating and beauty score analysis process",
+          "title": "Step 1: Upload Your Photo for AI Face Rating and Attractiveness Test"
         }
       },
       {
-        "title": "Start Your Project",
-        "description": "Read the documentation and clone the code of ShipAny. Start building your AI SaaS startup.",
+        "title": "Quick Upload & AI Analysis",
+        "description": "Simply upload your photo and click 'Analyze'. Our advanced AI face rate technology will instantly process your image, evaluating hundreds of facial features to generate your comprehensive attractiveness score.",
         "image": {
-          "src": "/imgs/features/6.png"
+          "src": "/imgs/features/6.png",
+          "alt": "AI analysis processing - FaceRate AI facial feature analysis and beauty scoring",
+          "title": "Step 2: AI Analysis Processing for Face Rating and Beauty Score Calculation"
         }
       },
       {
-        "title": "Customize Your Project",
-        "description": "Modify the template with your data and contents. Specific AI functionality needs.",
+        "title": "Get Your Detailed Score Report",
+        "description": "Receive a detailed breakdown of your facial features, including symmetry analysis, golden ratio measurements, and personalized insights about your unique facial characteristics.",
         "image": {
-          "src": "/imgs/features/7.png"
+          "src": "/imgs/features/7.png",
+          "alt": "Beauty score results - FaceRate AI attractiveness rating and facial analysis report",
+          "title": "Step 3: Get Your Beauty Score and Attractiveness Analysis Results"
         }
       },
       {
-        "title": "Deploy to Production",
-        "description": "Deploy your project to production with a few steps and start serving customers immediately.",
+        "title": "Share Your Results Globally",
+        "description": "Download your AI face rate results and share them with the global community. Compare your score with others worldwide and see how you rank in different regions and demographics.",
         "image": {
-          "src": "/imgs/features/8.png"
+          "src": "/imgs/features/8.png",
+          "alt": "Share results - FaceRate AI beauty score sharing and social comparison features",
+          "title": "Step 4: Share Your Face Rating Results and Compare with Friends"
         }
       }
     ]
@@ -283,177 +259,133 @@
     "icon": "GoThumbsup",
     "items": [
       {
-        "title": "David Chen",
-        "label": "Founder of AIWallpaper.shop",
-        "description": "ShipAny saved us months of development time. We launched our AI wallpaper business in just 2 days and got our first paying customer within a week!",
-        "image": {
-          "src": "/imgs/users/1.png"
-        }
+        "name": "Sarah Johnson",
+        "role": "Marketing Director",
+        "content": "This AI face rating tool has revolutionized how we understand beauty standards. The accuracy is impressive!",
+        "rating": 5,
+        "src": "/imgs/users/1.png",
+        "alt": "Sarah Johnson - FaceRate AI user testimonial for attractiveness test and beauty score analysis",
+        "title": "Sarah Johnson testimonial - AI Face Rate beauty analysis user review"
       },
       {
-        "title": "Rachel Kim",
-        "label": "CTO at HeyBeauty.ai",
-        "description": "The pre-built AI infrastructure is a game-changer. We didn't have to worry about architecture - just focused on our AI beauty tech and went live fast.",
-        "image": {
-          "src": "/imgs/users/2.png"
-        }
+        "name": "Michael Chen",
+        "role": "Tech Entrepreneur",
+        "content": "FaceRate AI provides incredibly detailed analysis. It's become an essential tool for our beauty tech startup.",
+        "rating": 5,
+        "src": "/imgs/users/2.png",
+        "alt": "Michael Chen - FaceRate AI testimonial for AI face rating and beauty score technology",
+        "title": "Michael Chen review - AI attractiveness test and face analysis tool"
       },
       {
-        "title": "Marcus Thompson",
-        "label": "Solo Developer",
-        "description": "As a solo developer, ShipAny gave me everything I needed - auth, payments, AI integration, and beautiful UI. Launched my SaaS in a weekend!",
-        "image": {
-          "src": "/imgs/users/3.png"
-        }
+        "name": "Emily Rodriguez",
+        "role": "Social Media Influencer",
+        "content": "The beauty score analysis is spot-on. This AI attractiveness test helps me understand what makes faces appealing.",
+        "rating": 5,
+        "src": "/imgs/users/3.png",
+        "alt": "Emily Rodriguez - AI attractiveness test user testimonial for FaceRate beauty analysis",
+        "title": "Emily Rodriguez testimonial - AI Face Rate beauty score and attractiveness analysis"
       },
       {
-        "title": "Sofia Garcia",
-        "label": "CEO of Melodisco",
-        "description": "The templates are production-ready and highly customizable. We built our AI music platform in hours instead of months. Incredible time-to-market!",
-        "image": {
-          "src": "/imgs/users/4.png"
-        }
+        "name": "David Kim",
+        "role": "UX Designer",
+        "content": "ShipAny's face rating technology is groundbreaking. The AI analysis provides valuable insights for design work.",
+        "rating": 5,
+        "src": "/imgs/users/4.png",
+        "alt": "David Kim - ShipAny FaceRate AI user testimonial for face rating technology",
+        "title": "David Kim review - AI face analysis and beauty score technology by ShipAny"
       },
       {
-        "title": "James Wilson",
-        "label": "Tech Lead at GPTs.works",
-        "description": "ShipAny's infrastructure is rock-solid. We scaled from 0 to 10k users without touching the backend. Best investment for our AI startup.",
-        "image": {
-          "src": "/imgs/users/5.png"
-        }
+        "name": "Lisa Wang",
+        "role": "Beauty Consultant",
+        "content": "This AI face rate tool has transformed my consultation process. Clients love the detailed beauty analysis.",
+        "rating": 5,
+        "src": "/imgs/users/5.png",
+        "alt": "Lisa Wang - FaceRate AI beauty consultant testimonial for face rating and attractiveness analysis",
+        "title": "Lisa Wang testimonial - AI Face Rate tool for beauty consultation and analysis"
       },
       {
-        "title": "Anna Zhang",
-        "label": "Startup Founder",
-        "description": "From idea to launch in 3 days! ShipAny's templates and deployment tools made it possible to test our AI business concept incredibly fast.",
-        "image": {
-          "src": "/imgs/users/6.png"
-        }
+        "name": "James Wilson",
+        "role": "Product Manager",
+        "content": "FaceRate AI's attractiveness scoring is incredibly sophisticated. It's the future of beauty technology.",
+        "rating": 5,
+        "src": "/imgs/users/6.png",
+        "alt": "James Wilson - FaceRate AI product manager testimonial for attractiveness scoring technology",
+        "title": "James Wilson review - AI attractiveness scoring and face rating technology"
       }
     ]
   },
   "faq": {
     "name": "faq",
-    "label": "FAQ",
-    "title": "Frequently Asked Questions About ShipAny",
-    "description": "Have another question? Contact us on Discord or by email.",
+    "label": "QUESTIONS?",
+    "title": "Frequently Asked Questions",
+    "description": "Have questions about our AI face rate service? We've got answers. Find out more about our unique attractiveness test, the technology behind it, and our privacy policies below.",
     "items": [
       {
-        "title": "What exactly is ShipAny and how does it work?",
-        "description": "ShipAny is a comprehensive NextJS boilerplate designed specifically for building AI SaaS startups. It provides ready-to-use templates, infrastructure setup, and deployment tools that help you launch your AI business in hours instead of days."
+        "title": "How does the AI face rate actually work?",
+        "description": "Our AI face rate system uses a type of artificial intelligence called a Convolutional Neural Network (CNN). It's been trained on a massive, ethically sourced dataset of faces with varied ratings. When you upload your photo, the AI detects key facial landmarks, measures distances and ratios between them, analyzes symmetry, and compares these patterns to the data it learned during training to generate a score. It’s a purely mathematical and pattern-recognition process."
       },
       {
-        "title": "Do I need advanced technical skills to use ShipAny?",
-        "description": "While basic programming knowledge is helpful, ShipAny is designed to be developer-friendly. Our templates and documentation make it easy to get started, even if you're not an expert in AI or cloud infrastructure."
+        "title": "Is this attractiveness test accurate?",
+        "description": "Our AI aims for objectivity and consistency, not subjective truth. 'Attractiveness' is highly subjective and culturally dependent. Our AI face rate measures aesthetic qualities based on geometric principles, symmetry, and patterns learned from its training data. It provides a consistent, data-driven score, which is a powerful metric but should be considered one of many perspectives on beauty. The accuracy lies in its consistency and unbiased methodology."
       },
       {
-        "title": "What types of AI SaaS can I build with ShipAny?",
-        "description": "ShipAny supports a wide range of AI applications, from content generation to data analysis tools. Our templates cover popular use cases like AI chatbots, content generators, image processing apps, and more."
+        "title": "Are my photos and data safe?",
+        "description": "Absolutely. Your privacy is our number one priority. Your photo is uploaded via a secure connection, processed in-memory, and then permanently deleted from our servers the moment your AI face rate report is generated. We do not store, share, or sell your photos or personal data. The entire attractiveness test process is anonymous and secure."
       },
       {
-        "title": "How long does it typically take to launch with ShipAny?",
-        "description": "With ShipAny, you can have a working prototype in hours and a production-ready application in hours. Our one-click deployment and pre-configured infrastructure significantly reduce the traditional months-long development cycle."
+        "title": "What information is included in my AI face rate report?",
+        "description": "Your report includes an overall attractiveness score on a scale of 1-10. More importantly, it provides a detailed breakdown of individual facial features, including scores for facial symmetry, skin quality, jawline, nose shape, eye size and spacing, and lip volume. This granular detail is what makes our AI face rate a truly useful tool."
       },
       {
-        "title": "What's included in the ShipAny infrastructure?",
-        "description": "ShipAny provides a complete infrastructure stack including authentication, database setup, API integration, payment processing, and scalable cloud deployment. Everything is pre-configured following industry best practices."
+        "title": "Can I do anything to improve my AI face rate score?",
+        "description": "While your core facial structure is genetic, some factors can influence your AI face rate. These include photo quality (use clear, well-lit, front-facing photos), grooming, skincare (which affects the skin clarity score), and expression. The tool can be used to see how different hairstyles or angles might affect your perceived facial harmony. Our attractiveness test can help you find your best presentation."
       },
       {
-        "title": "Can I customize the templates to match my brand?",
-        "description": "Absolutely! All ShipAny templates are fully customizable. You can modify the design, features, and functionality to match your brand identity and specific business requirements while maintaining the robust underlying infrastructure."
+        "title": "How is your AI face rate different from other online rating apps?",
+        "description": "Many other apps are based on simple filters or peer-voting, which is highly subjective and biased. Our uniqueness lies in our sophisticated AI, commitment to privacy (photo deletion), detailed feature breakdown, and foundation in geometric analysis. We provide a scientific-style attractiveness test, not a popularity contest. This makes our AI face rate a more reliable and private tool."
       }
     ]
   },
   "cta": {
     "name": "cta",
-    "title": "Ship your first AI SaaS Startup",
-    "description": "Start from here, ship with ShipAny.",
+    "title": "Ready to See Your Score? Get Your AI Face Rate Now!",
+    "description": "Stop wondering and start knowing. Get your confidential, data-driven attractiveness test in under 30 seconds. Your journey to self-discovery is just one click away. Begin your analysis now.",
     "buttons": [
       {
-        "title": "Get ShipAny",
-        "url": "https://shipany.ai",
-        "target": "_blank",
+        "title": "Start Free Attractiveness Test",
+        "url": "#facerate",
+        "target": "_self",
         "icon": "GoArrowUpRight"
-      },
-      {
-        "title": "Read Document",
-        "url": "https://docs.shipany.ai",
-        "target": "_blank",
-        "variant": "outline"
       }
     ]
   },
   "footer": {
     "name": "footer",
     "brand": {
-      "title": "ShipAny",
-      "description": "ShipAny is a NextJS boilerplate for building AI SaaS startups. Ship Fast with a variety of templates and components.",
+      "title": "FaceRate AI",
+      "description": "AI Face Rate is an advanced facial analysis platform powered by artificial intelligence. Get accurate, data-driven beauty scores and detailed attractiveness test insights through our sophisticated AI technology.",
       "logo": {
         "src": "/logo.png",
-        "alt": "ShipAny"
+        "alt": "FaceRate AI - AI Face Rating and Beauty Score Analysis Platform Logo",
+        "title": "FaceRate AI Logo - AI Attractiveness Test and Beauty Analysis"
       },
       "url": "/"
     },
-    "copyright": "© 2025 • ShipAny All rights reserved.",
+    "copyright": "© 2025 • FaceRate AI All rights reserved.",
     "nav": {
       "items": [
         {
           "title": "About",
           "children": [
             {
-              "title": "Features",
+              "title": "How to Use",
               "url": "/#feature",
               "target": "_self"
             },
             {
-              "title": "Showcases",
-              "url": "/#showcase",
+              "title": "What is AI Face Rate",
+              "url": "/#introduce",
               "target": "_self"
-            },
-            {
-              "title": "Pricing",
-              "url": "/#pricing",
-              "target": "_self"
-            }
-          ]
-        },
-        {
-          "title": "Resources",
-          "children": [
-            {
-              "title": "Documents",
-              "url": "https://docs.shipany.ai",
-              "target": "_blank"
-            },
-            {
-              "title": "Components",
-              "url": "https://shipany.ai/components",
-              "target": "_blank"
-            },
-            {
-              "title": "Templates",
-              "url": "https://shipany.ai/templates",
-              "target": "_blank"
-            }
-          ]
-        },
-        {
-          "title": "Friends",
-          "children": [
-            {
-              "title": "ThinkAny",
-              "url": "https://thinkany.ai",
-              "target": "_blank"
-            },
-            {
-              "title": "HeyBeauty",
-              "url": "https://heybeauty.ai",
-              "target": "_blank"
-            },
-            {
-              "title": "Pagen",
-              "url": "https://pagen.so",
-              "target": "_blank"
             }
           ]
         }
@@ -462,27 +394,9 @@
     "social": {
       "items": [
         {
-          "title": "X",
-          "icon": "RiTwitterXFill",
-          "url": "https://x.com/shipanyai",
-          "target": "_blank"
-        },
-        {
-          "title": "Github",
-          "icon": "RiGithubFill",
-          "url": "https://github.com/shipanyai",
-          "target": "_blank"
-        },
-        {
-          "title": "Discord",
-          "icon": "RiDiscordFill",
-          "url": "https://discord.gg/HQNnrzjZQS",
-          "target": "_blank"
-        },
-        {
           "title": "Email",
           "icon": "RiMailLine",
-          "url": "mailto:support@shipany.ai",
+          "url": "mailto:0992sunshine@gmail.com",
           "target": "_self"
         }
       ]

@@ -29,3 +29,88 @@ button {
 pre {
   @apply px-4;
 }
+
+/* 字体类样式 */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* Logo 专用样式 */
+.logo-text {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* 标题样式 */
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+/* 品牌色工具类 */
+.text-brand {
+  color: var(--primary);
+}
+
+.bg-brand {
+  background-color: var(--primary);
+}
+
+.border-brand {
+  border-color: var(--primary);
+}
+
+/* 品牌色渐变 */
+.bg-brand-gradient {
+  background: linear-gradient(135deg, 
+    var(--primary) 0%, 
+    oklch(from var(--primary) l c calc(h + 20)) 100%);
+}
+
+/* 品牌色阴影 */
+.shadow-brand {
+  box-shadow: 0 4px 14px 0 oklch(from var(--primary) l c h / 0.25);
+}
+
+/* 悬停效果 */
+.hover-brand:hover {
+  color: oklch(from var(--primary) calc(l - 0.1) c h);
+}
+
+.hover-bg-brand:hover {
+  background-color: oklch(from var(--primary) calc(l - 0.05) c h);
+}
+
+/* 品牌色按钮样式 */
+.btn-brand {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border: 1px solid var(--primary);
+  transition: all 0.2s ease;
+}
+
+.btn-brand:hover {
+  background-color: oklch(from var(--primary) calc(l - 0.05) c h);
+}
+
+/* 品牌色轮廓按钮 */
+.btn-brand-outline {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  transition: all 0.2s ease;
+}
+
+.btn-brand-outline:hover {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
