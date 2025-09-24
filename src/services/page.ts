@@ -12,6 +12,10 @@ export async function getShowcasePage(locale: string): Promise<ShowcasePage> {
   return (await getPage("showcase", locale)) as ShowcasePage;
 }
 
+export async function getFaceratePage(locale: string): Promise<any> {
+  return (await getPage("facerate", locale)) as any;
+}
+
 export async function getPage(
   name: string,
   locale: string

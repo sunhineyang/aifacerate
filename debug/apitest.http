@@ -53,3 +53,28 @@ Authorization: Bearer {{apiKey}}
   "subject": "Hello from ShipAny, with Resend",
   "content": "<p style='color: red;'>Hello from <a href='https://shipany.ai'>Shipany</a></p>"
 }
+
+### Test DIFY API Direct Connection
+# 直接测试DIFY API连接（需要替换为实际的DIFY API URL）
+POST https://api.dify.ai/v1/completion-messages
+Content-Type: application/json
+Authorization: Bearer app-1xn6xh2xGHri6hO5XGrMCmTx
+
+{
+  "inputs": {
+    "photo": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=",
+    "lang": "zh"
+  },
+  "response_mode": "blocking",
+  "user": "test-user"
+}
+
+### Test FaceRate Analyze API
+# 测试我们的本地API接口
+POST {{baseUrl}}/api/analyze
+Content-Type: application/json
+
+{
+  "photo": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=",
+  "lang": "zh"
+}

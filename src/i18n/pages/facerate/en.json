@@ -1,0 +1,127 @@
+{
+  "title": "AI Face Rating",
+  "subtitle": "Upload your photo and get an AI-powered attractiveness score",
+  "upload": {
+    "title": "Upload Your Photo",
+    "dragText": "Drag and drop your photo here, or click to select",
+    "dragActive": "Release to upload",
+    "selectButton": "Select Photo",
+    "supportedFormats": "Supported formats: JPG, PNG, GIF",
+    "maxSize": "Maximum size: 10MB",
+    "privacy": "Your photo will not be saved or shared without your consent",
+    "uploading": "Uploading...",
+    "analyzing": "AI is analyzing your photo...",
+    "uploadFailed": "Upload Failed",
+    "tips": {
+      "title": "Usage Tips",
+      "clearPhoto": "Please upload a clear front-facing photo with a fully visible face",
+      "noFilters": "Avoid using heavily beautified or filtered photos",
+      "goodLighting": "Well-lit photos provide more accurate analysis results"
+    },
+    "processingSteps": {
+      "detecting": "Detecting facial features...",
+      "analyzing": "Analyzing attractiveness factors...",
+      "calculating": "Calculating final score...",
+      "generating": "Generating personalized feedback..."
+    }
+  },
+  "progress": {
+    "title": "AI Analysis in Progress...",
+    "subtitle": "Please wait while we analyze your photo using advanced AI technology",
+    "progressLabel": "Analysis Progress",
+    "steps": {
+      "faceDetection": {
+        "label": "Face Detection",
+        "description": "Detecting facial features..."
+      },
+      "featureAnalysis": {
+        "label": "Feature Analysis",
+        "description": "Analyzing facial proportions and symmetry..."
+      },
+      "beautyScoring": {
+        "label": "Beauty Scoring",
+        "description": "Scoring based on aesthetic standards..."
+      },
+      "resultGeneration": {
+        "label": "Report Generation",
+        "description": "Generating personalized analysis report..."
+      }
+    },
+    "completed": "Completed",
+    "aiProcessing": "AI is applying deep learning algorithms for precise analysis"
+  },
+  "result": {
+    "title": "Analysis Results",
+    "score": "Attractiveness Score",
+    "age": "Predicted Age",
+    "ageLabel": "Facial Age",
+    "celebrity": {
+      "label": "Celebrity Look-alike",
+      "format": "{name} ({country})"
+    },
+    "quote": "Personalized Quote",
+    "watermark": "aifacerate.com",
+    "actions": {
+      "download": "Download HD Image",
+      "reanalyze": "Analyze Again",
+      "removeWatermark": "Remove Watermark",
+      "addWatermark": "Add Watermark",
+      "share": "Share Result",
+      "save": "Save Result"
+    },
+    "watermarkOption": {
+      "title": "Remove Watermark",
+      "enabled": "Watermark hidden",
+      "disabled": "Show website watermark"
+    },
+    "features": {
+      "title": "Detailed Analysis",
+      "facial_symmetry": "Facial Symmetry",
+      "skin_quality": "Skin Quality",
+      "eye_appeal": "Eye Appeal",
+      "facial_structure": "Facial Structure",
+      "overall_harmony": "Overall Harmony"
+    },
+    "disclaimer": "This analysis is for entertainment purposes only and does not reflect real beauty standards."
+  },
+  "errors": {
+    "invalidFile": "Please select a valid image file",
+    "fileTooLarge": "File size exceeds 10MB limit",
+    "uploadFailed": "Upload failed, please try again",
+    "analysisFailed": "Analysis failed, please try again",
+    "noFaceDetected": "No face detected in the image, please upload a clear photo with a visible face"
+  },
+  "error": {
+    "upload": "Upload failed, please try again",
+    "analyze": "Analysis failed, please try again",
+    "network": "Network error, please check your connection",
+    "server": "Server error, please try again later",
+    "invalid_image": "Invalid image format, please upload JPG, PNG or WebP format",
+    "image_too_large": "Image is too large, please upload an image smaller than 10MB",
+    "no_face_detected": "No face detected in the image, please upload a photo with a clear face"
+  },
+  "notAnalyzable": {
+    "title": "Need a Clearer Photo",
+    "tips": {
+      "title": "📸 Photo Tips:",
+      "items": {
+        "0": "Ensure good lighting, avoid shadows",
+        "1": "Face the camera directly with clear eyes",
+        "2": "Avoid hats, sunglasses or other obstructions",
+        "3": "Keep the photo clear and avoid blur",
+        "4": "Ensure only one person is in the photo"
+      }
+    },
+    "actions": {
+      "retry": "Retry Analysis",
+      "uploadNew": "Upload New Photo"
+    },
+    "description": "Our AI needs a clear facial photo to provide accurate analysis results"
+  },
+  "loading": {
+    "uploading": "Uploading your photo...",
+    "processing": "Processing image...",
+    "analyzing": "AI is working its magic...",
+    "almostDone": "Almost done..."
+  }
+}

@@ -10,6 +10,7 @@ import Pricing from "@/components/blocks/pricing";
 import Showcase from "@/components/blocks/showcase";
 import Stats from "@/components/blocks/stats";
 import Testimonial from "@/components/blocks/testimonial";
+import FaceRate from "@/components/facerate";
 import { getLandingPage } from "@/services/page";
 
 export async function generateMetadata({
@@ -42,6 +43,7 @@ export default async function LandingPage({
   return (
     <>
       {page.hero && <Hero hero={page.hero} />}
+      <FaceRate locale={locale} />
       {/* {page.branding && <Branding section={page.branding} />} */}
       {page.usage && <Feature3 section={page.usage} />}
       {page.introduce && <Feature1 section={page.introduce} />}
