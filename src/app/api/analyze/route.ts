@@ -216,9 +216,9 @@ export async function POST(request: NextRequest) {
     }
     
     // 检查响应内容类型
-    const contentType = difyResponse.headers.get('content-type');
-    if (!contentType || !contentType.includes('application/json')) {
-      console.error('DIFY API 响应不是JSON格式:', contentType);
+    const difyContentType = difyResponse.headers.get('content-type');
+    if (!difyContentType || !difyContentType.includes('application/json')) {
+      console.error('DIFY API 响应不是JSON格式:', difyContentType);
       const errorText = await difyResponse.text();
       console.error('响应内容:', errorText);
       return NextResponse.json(
