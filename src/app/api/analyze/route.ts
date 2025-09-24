@@ -103,6 +103,13 @@ export async function POST(request: NextRequest) {
     const difyApiUrl = process.env.DIFY_API_URL;
     const difyApiToken = process.env.DIFY_API_TOKEN;
     
+    console.log('环境变量检查:', {
+      NODE_ENV: process.env.NODE_ENV,
+      VERCEL: process.env.VERCEL,
+      difyApiUrl: difyApiUrl ? `${difyApiUrl.substring(0, 20)}...` : 'undefined',
+      difyApiToken: difyApiToken ? `${difyApiToken.substring(0, 10)}...` : 'undefined'
+    });
+    
     if (!difyApiUrl || !difyApiToken) {
       console.error('DIFY API 配置缺失:', { 
         difyApiUrl: !!difyApiUrl, 
@@ -159,6 +166,18 @@ export async function POST(request: NextRequest) {
       );
     }
     
+    // 检查响应内容类型
+    const contentType = uploadResponse.headers.get('content-type');
+    if (!contentType || !contentType.includes('application/json')) {
+      console.error('上传响应不是JSON格式:', contentType);
+      const errorText = await uploadResponse.text();
+      console.error('响应内容:', errorText);
+      return NextResponse.json(
+        { error: 'AI 分析服务返回格式错误，请稍后重试' },
+        { status: 503 }
+      );
+    }
+    
     const uploadResult = await uploadResponse.json();
     console.log('文件上传成功:', uploadResult);
     
@@ -188,8 +207,22 @@ export async function POST(request: NextRequest) {
     
     if (!difyResponse.ok) {
       console.error('DIFY API 调用失败:', difyResponse.status, difyResponse.statusText);
+      const errorText = await difyResponse.text();
+      console.error('DIFY API 错误详情:', errorText);
       return NextResponse.json(
         { error: 'AI 分析服务暂时不可用，请稍后重试' },
+        { status: 503 }
+      );
+    }
+    
+    // 检查响应内容类型
+    const contentType = difyResponse.headers.get('content-type');
+    if (!contentType || !contentType.includes('application/json')) {
+      console.error('DIFY API 响应不是JSON格式:', contentType);
+      const errorText = await difyResponse.text();
+      console.error('响应内容:', errorText);
+      return NextResponse.json(
+        { error: 'AI 分析服务返回格式错误，请稍后重试' },
         { status: 503 }
       );
     }
@@ -261,13 +294,35 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(transformedResult);
     
   } catch (error) {
-    console.error('API 处理错误:', error);
+    console.error('API 处理错误:', {
+      error: error instanceof Error ? error.message : String(error),
+      stack: error instanceof Error ? error.stack : undefined,
+      name: error instanceof Error ? error.name : undefined,
+      timestamp: new Date().toISOString()
+    });
     
     // 处理超时错误
     if (error instanceof Error && error.name === 'TimeoutError') {
       return NextResponse.json(
         { error: '分析超时，请稍后重试' },
         { status: 408 }
+      );
+    }
+    
+    // 处理JSON解析错误
+    if (error instanceof Error && error.message.includes('Unexpected token')) {
+      console.error('JSON解析错误，可能是API返回了HTML错误页面');
+      return NextResponse.json(
+        { error: 'AI服务返回格式错误，请检查API配置或稍后重试' },
+        { status: 503 }
+      );
+    }
+    
+    // 处理网络错误
+    if (error instanceof Error && (error.message.includes('fetch') || error.message.includes('network'))) {
+      return NextResponse.json(
+        { error: '网络连接错误，请检查网络或稍后重试' },
+        { status: 503 }
       );
     }
     
