@@ -226,8 +226,8 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    // DIFY返回的数据在outputs.res中
-    const analysisResult = outputs.res || outputs;
+    // DIFY返回的数据直接在outputs中
+    const analysisResult = outputs;
     
     // 检查分析结果 - analyzable为false是正常结果，需要显示给用户
     if (analysisResult.analyzable === false) {
