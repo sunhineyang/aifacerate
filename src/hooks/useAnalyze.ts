@@ -111,11 +111,20 @@ export function useAnalyze(): UseAnalyzeReturn {
         errorMessage = err;
       }
       
+      // 修复错误日志显示问题 - 分别记录错误信息和原始错误
       console.error('人脸分析错误:', {
         timestamp: new Date().toISOString(),
         error: errorMessage,
-        originalError: err
+        errorType: err instanceof Error ? err.name : typeof err,
+        errorStack: err instanceof Error ? err.stack : undefined
       });
+      
+      // 如果原始错误是Error对象，单独记录其详细信息
+      if (err instanceof Error) {
+        console.error('错误详情:', err);
+      } else {
+        console.error('原始错误:', err);
+      }
       
       setError(errorMessage);
       return null;
