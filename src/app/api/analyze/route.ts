@@ -179,10 +179,12 @@ export async function POST(request: NextRequest) {
     console.log('📊 DIFY 输出数据详情:', outputs);
     
     // 检查分析结果 - 修复数据结构访问
-    if (outputs.analyzable === false) {
-      console.log('❌ DIFY无法识别人脸:', outputs.message);
+    // DIFY返回的数据结构是 {res: {实际数据}}
+    const analysisData = outputs.res || outputs;
+    if (analysisData.analyzable === false) {
+      console.log('❌ DIFY无法识别人脸:', analysisData.message);
       return NextResponse.json(
-        { error: outputs.message || '无法分析此图片，请尝试其他图片' },
+        { error: analysisData.message || '无法分析此图片，请尝试其他图片' },
         { status: 400 }
       );
     }
@@ -196,8 +198,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 严格验证DIFY返回的数据 - 不使用任何默认值
-    const resData = outputs;
+    // 严格验证DIFY返回的数据 - 修复数据结构访问
+    // DIFY返回的数据结构是 {res: {实际数据}}
+    const resData = outputs.res || outputs;
     
     // 检查必需的数据字段是否存在
     if (typeof resData.score !== 'number') {

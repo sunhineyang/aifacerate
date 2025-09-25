@@ -174,9 +174,8 @@ export async function convertToBase64(file: File): Promise<string> {
       
       reader.onload = () => {
         if (typeof reader.result === 'string') {
-          // 移除data:image/...;base64,前缀，只保留base64数据
-          const base64 = reader.result.split(',')[1];
-          resolve(base64);
+          // 保持完整的data URL格式，让API端处理前缀移除
+          resolve(reader.result);
         } else {
           reject(new Error('文件读取失败'));
         }
