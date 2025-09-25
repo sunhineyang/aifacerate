@@ -179,43 +179,43 @@ export async function POST(request: NextRequest) {
     console.log('📊 DIFY 输出数据详情:', outputs);
     
     // 检查分析结果 - 修复数据结构访问
-    if (outputs.res?.analyzable === false) {
-      console.log('❌ DIFY无法识别人脸:', outputs.res.message);
+    if (outputs.analyzable === false) {
+      console.log('❌ DIFY无法识别人脸:', outputs.message);
       return NextResponse.json(
-        { error: outputs.res.message || '无法分析此图片，请尝试其他图片' },
+        { error: outputs.message || '无法分析此图片，请尝试其他图片' },
         { status: 400 }
       );
     }
-    
+
     // 检查是否有有效的分析数据
-    if (!outputs.res || typeof outputs.res !== 'object') {
+    if (!outputs || typeof outputs !== 'object') {
       console.log('❌ DIFY返回数据格式异常:', outputs);
       return NextResponse.json(
         { error: '分析数据格式异常，请重试' },
         { status: 500 }
       );
     }
-    
+
     // 严格验证DIFY返回的数据 - 不使用任何默认值
-    const resData = outputs.res;
+    const resData = outputs;
     
     // 检查必需的数据字段是否存在
-    if (!resData.score && resData.score !== 0) {
+    if (typeof resData.score !== 'number') {
       console.log('❌ 缺少评分数据:', resData);
       return NextResponse.json(
         { error: 'AI分析数据不完整：缺少评分' },
         { status: 500 }
       );
     }
-    
-    if (!resData.predicted_age && resData.predicted_age !== 0) {
+
+    if (typeof resData.predicted_age !== 'number') {
       console.log('❌ 缺少年龄数据:', resData);
       return NextResponse.json(
         { error: 'AI分析数据不完整：缺少年龄预测' },
         { status: 500 }
       );
     }
-    
+
     if (!resData.celebrity_lookalike?.name) {
       console.log('❌ 缺少明星相似度数据:', resData);
       return NextResponse.json(
@@ -223,7 +223,7 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       );
     }
-    
+
     if (!resData.golden_quote) {
       console.log('❌ 缺少评价数据:', resData);
       return NextResponse.json(
