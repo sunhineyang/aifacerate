@@ -65,72 +65,18 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    // 检查是否启用模拟数据模式
-    const useMockData = process.env.USE_MOCK_DATA === 'true';
-    
-    if (useMockData) {
-      console.log('使用模拟数据模式...', {
-        timestamp: new Date().toISOString(),
-        lang,
-        photoSize: photo.length
-      });
-      
-      // 模拟API延迟
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // 返回模拟数据
-      const mockResult: AnalysisResult = {
-        score: Math.floor(Math.random() * 30) + 70, // 70-100分
-        stars: Math.floor(Math.random() * 2) + 4, // 4-5星
-        age: Math.floor(Math.random() * 20) + 20, // 20-40岁
-        celebrity: {
-          name: lang === 'zh' ? '刘亦菲' : 'Emma Stone',
-          country: lang === 'zh' ? '中国' : 'USA'
-        },
-        comment: lang === 'zh' ? '您拥有迷人的笑容和优雅的气质！' : 'You have a charming smile and elegant temperament!',
-        features: {
-          eyes: lang === 'zh' ? '深邃有神' : 'Deep and expressive',
-          nose: lang === 'zh' ? '轮廓分明' : 'Well-defined',
-          smile: lang === 'zh' ? '温暖迷人' : 'Warm and charming',
-          face: lang === 'zh' ? '比例协调' : 'Well-proportioned'
-        }
-      };
-      
-      return NextResponse.json(mockResult);
-    }
+    // 移除模拟数据模式 - 只使用真实的DIFY数据
     
     // 检查环境变量
     const difyApiUrl = process.env.DIFY_API_URL;
     const difyApiToken = process.env.DIFY_API_TOKEN;
     
-    console.log('环境变量检查:', {
-      NODE_ENV: process.env.NODE_ENV,
-      VERCEL: process.env.VERCEL,
-      difyApiUrl: difyApiUrl ? `${difyApiUrl.substring(0, 20)}...` : 'undefined',
-      difyApiToken: difyApiToken ? `${difyApiToken.substring(0, 10)}...` : 'undefined'
-    });
-    
     if (!difyApiUrl || !difyApiToken) {
-      console.error('DIFY API 配置缺失:', { 
-        difyApiUrl: !!difyApiUrl, 
-        difyApiToken: !!difyApiToken,
-        actualUrl: difyApiUrl,
-        actualToken: difyApiToken ? `${difyApiToken.substring(0, 10)}...` : 'undefined'
-      });
       return NextResponse.json(
-        { error: 'API 配置错误，请联系管理员。提示：可以在.env文件中设置 USE_MOCK_DATA=true 来使用模拟数据测试' },
+        { error: 'API 配置错误，请联系管理员' },
         { status: 500 }
       );
     }
-    
-    console.log('开始调用 DIFY API...', {
-      timestamp: new Date().toISOString(),
-      lang,
-      photoSize: photo.length
-    });
-    
-    // 第一步：上传文件到DIFY获取upload_file_id
-    console.log('步骤1: 上传文件到DIFY...');
     
     // 将base64转换为Blob
     const base64Data = photo.replace(/^data:image\/[a-z]+;base64,/, '');
@@ -157,33 +103,15 @@ export async function POST(request: NextRequest) {
     });
     
     if (!uploadResponse.ok) {
-      console.error('文件上传失败:', uploadResponse.status, uploadResponse.statusText);
-      const errorText = await uploadResponse.text();
-      console.error('上传错误详情:', errorText);
       return NextResponse.json(
         { error: 'AI 分析服务暂时不可用，请稍后重试' },
         { status: 503 }
       );
     }
     
-    // 检查响应内容类型
-    const contentType = uploadResponse.headers.get('content-type');
-    if (!contentType || !contentType.includes('application/json')) {
-      console.error('上传响应不是JSON格式:', contentType);
-      const errorText = await uploadResponse.text();
-      console.error('响应内容:', errorText);
-      return NextResponse.json(
-        { error: 'AI 分析服务返回格式错误，请稍后重试' },
-        { status: 503 }
-      );
-    }
-    
     const uploadResult = await uploadResponse.json();
-    console.log('文件上传成功:', uploadResult);
     
-    // 第二步：使用upload_file_id调用工作流
-    console.log('步骤2: 调用工作流...');
-    
+    // 调用工作流
     const difyResponse = await fetch(`${difyApiUrl}/workflows/run`, {
       method: 'POST',
       headers: {
@@ -206,46 +134,34 @@ export async function POST(request: NextRequest) {
     });
     
     if (!difyResponse.ok) {
-      console.error('DIFY API 调用失败:', difyResponse.status, difyResponse.statusText);
-      const errorText = await difyResponse.text();
-      console.error('DIFY API 错误详情:', errorText);
       return NextResponse.json(
         { error: 'AI 分析服务暂时不可用，请稍后重试' },
         { status: 503 }
       );
     }
     
-    // 检查响应内容类型
-    const difyContentType = difyResponse.headers.get('content-type');
-    if (!difyContentType || !difyContentType.includes('application/json')) {
-      console.error('DIFY API 响应不是JSON格式:', difyContentType);
-      const errorText = await difyResponse.text();
-      console.error('响应内容:', errorText);
-      return NextResponse.json(
-        { error: 'AI 分析服务返回格式错误，请稍后重试' },
-        { status: 503 }
-      );
-    }
-    
     const result: DifyWorkflowResponse = await difyResponse.json();
     
-    console.log('DIFY API 调用成功:', {
+    // 详细记录DIFY返回的原始数据
+    console.log('🔍 DIFY API 原始返回数据:', {
       timestamp: new Date().toISOString(),
-      status: result.data.status,
-      workflow_run_id: result.workflow_run_id
+      workflow_run_id: result.workflow_run_id,
+      task_id: result.task_id,
+      status: result.data?.status,
+      outputs: result.data?.outputs,
+      error: result.data?.error,
+      elapsed_time: result.data?.elapsed_time,
+      total_tokens: result.data?.total_tokens
     });
     
     // 检查工作流执行状态
-    if (result.data.status === 'failed') {
-      return NextResponse.json(
-        { error: result.data.error || '分析失败，请重试' },
-        { status: 500 }
-      );
-    }
-    
     if (result.data.status !== 'succeeded') {
+      console.log('❌ 工作流执行失败:', {
+        status: result.data.status,
+        error: result.data.error
+      });
       return NextResponse.json(
-        { error: '分析未完成，请重试' },
+        { error: '分析失败，请重试' },
         { status: 500 }
       );
     }
@@ -253,80 +169,94 @@ export async function POST(request: NextRequest) {
     // 获取输出数据
     const outputs = result.data.outputs;
     if (!outputs) {
+      console.log('❌ 输出数据为空');
       return NextResponse.json(
         { error: '分析结果为空，请重试' },
         { status: 500 }
       );
     }
     
-    // DIFY返回的数据直接在outputs中
-    const analysisResult = outputs;
+    console.log('📊 DIFY 输出数据详情:', outputs);
     
-    // 检查分析结果 - analyzable为false是正常结果，需要显示给用户
-    if (analysisResult.analyzable === false) {
+    // 检查分析结果 - 修复数据结构访问
+    if (outputs.res?.analyzable === false) {
+      console.log('❌ DIFY无法识别人脸:', outputs.res.message);
       return NextResponse.json(
-        { 
-          analyzable: false,
-          message: analysisResult.message || '无法分析此图片，请尝试上传其他照片'
-        },
-        { status: 200 }
+        { error: outputs.res.message || '无法分析此图片，请尝试其他图片' },
+        { status: 400 }
       );
     }
     
-    // 转换为前端期望的格式
+    // 检查是否有有效的分析数据
+    if (!outputs.res || typeof outputs.res !== 'object') {
+      console.log('❌ DIFY返回数据格式异常:', outputs);
+      return NextResponse.json(
+        { error: '分析数据格式异常，请重试' },
+        { status: 500 }
+      );
+    }
+    
+    // 严格验证DIFY返回的数据 - 不使用任何默认值
+    const resData = outputs.res;
+    
+    // 检查必需的数据字段是否存在
+    if (!resData.score && resData.score !== 0) {
+      console.log('❌ 缺少评分数据:', resData);
+      return NextResponse.json(
+        { error: 'AI分析数据不完整：缺少评分' },
+        { status: 500 }
+      );
+    }
+    
+    if (!resData.predicted_age && resData.predicted_age !== 0) {
+      console.log('❌ 缺少年龄数据:', resData);
+      return NextResponse.json(
+        { error: 'AI分析数据不完整：缺少年龄预测' },
+        { status: 500 }
+      );
+    }
+    
+    if (!resData.celebrity_lookalike?.name) {
+      console.log('❌ 缺少明星相似度数据:', resData);
+      return NextResponse.json(
+        { error: 'AI分析数据不完整：缺少明星相似度分析' },
+        { status: 500 }
+      );
+    }
+    
+    if (!resData.golden_quote) {
+      console.log('❌ 缺少评价数据:', resData);
+      return NextResponse.json(
+        { error: 'AI分析数据不完整：缺少个性化评价' },
+        { status: 500 }
+      );
+    }
+    
+    // 只有所有数据都完整时才返回结果
     const transformedResult: AnalysisResult = {
-      score: analysisResult.score || 0,
-      stars: Math.round((analysisResult.score || 0) / 20), // 转换为5星制
-      age: analysisResult.predicted_age || 25,
+      score: resData.score,
+      stars: Math.round(resData.score / 20),
+      age: resData.predicted_age,
       celebrity: {
-        name: analysisResult.celebrity_lookalike?.name || 'Unknown Celebrity',
-        country: analysisResult.celebrity_lookalike?.country || 'Unknown'
+        name: resData.celebrity_lookalike.name,
+        country: resData.celebrity_lookalike.country || 'Unknown'
       },
-      comment: analysisResult.golden_quote || '您拥有独特的魅力！',
+      comment: resData.golden_quote,
       features: {
-        eyes: '深邃有神',
-        nose: '轮廓分明',
-        smile: '温暖迷人',
-        face: '比例协调'
+        eyes: lang === 'zh' ? '深邃有神' : 'Deep and expressive',
+        nose: lang === 'zh' ? '轮廓分明' : 'Well-defined',
+        smile: lang === 'zh' ? '温暖迷人' : 'Warm and charming',
+        face: lang === 'zh' ? '比例协调' : 'Well-proportioned'
       }
     };
+    
+    console.log('✅ 成功转换DIFY数据:', transformedResult);
     
     return NextResponse.json(transformedResult);
     
   } catch (error) {
-    console.error('API 处理错误:', {
-      error: error instanceof Error ? error.message : String(error),
-      stack: error instanceof Error ? error.stack : undefined,
-      name: error instanceof Error ? error.name : undefined,
-      timestamp: new Date().toISOString()
-    });
+    console.error('API 处理错误:', error);
     
-    // 处理超时错误
-    if (error instanceof Error && error.name === 'TimeoutError') {
-      return NextResponse.json(
-        { error: '分析超时，请稍后重试' },
-        { status: 408 }
-      );
-    }
-    
-    // 处理JSON解析错误
-    if (error instanceof Error && error.message.includes('Unexpected token')) {
-      console.error('JSON解析错误，可能是API返回了HTML错误页面');
-      return NextResponse.json(
-        { error: 'AI服务返回格式错误，请检查API配置或稍后重试' },
-        { status: 503 }
-      );
-    }
-    
-    // 处理网络错误
-    if (error instanceof Error && (error.message.includes('fetch') || error.message.includes('network'))) {
-      return NextResponse.json(
-        { error: '网络连接错误，请检查网络或稍后重试' },
-        { status: 503 }
-      );
-    }
-    
-    // 处理其他错误
     return NextResponse.json(
       { error: '分析服务暂时不可用，请稍后重试' },
       { status: 500 }
