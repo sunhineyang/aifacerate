@@ -258,10 +258,21 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       );
     }
+
+    console.log('DIFY API 原始输出:', JSON.stringify(outputs, null, 2));
+
+    // DIFY返回的数据可能在outputs中，也可能在outputs.res中
+    // 根据用户提供的数据结构：{"res": {"analyzable": true, ...}}
+    let analysisResult = outputs;
     
-    // DIFY返回的数据直接在outputs中
-    const analysisResult = outputs;
-    
+    // 如果outputs中有res对象，则使用res中的数据
+    if (outputs.res && typeof outputs.res === 'object') {
+      console.log('检测到嵌套的res对象，使用res中的数据');
+      analysisResult = outputs.res;
+    }
+
+    console.log('解析后的分析结果:', JSON.stringify(analysisResult, null, 2));
+
     // 检查分析结果 - analyzable为false是正常结果，需要显示给用户
     if (analysisResult.analyzable === false) {
       return NextResponse.json(
@@ -272,7 +283,7 @@ export async function POST(request: NextRequest) {
         { status: 200 }
       );
     }
-    
+
     // 转换为前端期望的格式
     const transformedResult: AnalysisResult = {
       score: analysisResult.score || 0,
@@ -290,6 +301,8 @@ export async function POST(request: NextRequest) {
         face: '比例协调'
       }
     };
+
+    console.log('最终返回结果:', JSON.stringify(transformedResult, null, 2));
     
     return NextResponse.json(transformedResult);
     
