@@ -18,7 +18,6 @@ export function baseOptions(locale: string): BaseLayoutProps {
           <span className="text-lg text-primary font-bold">ShipAny</span>
         </>
       ),
-      transparentMode: "top",
     },
     i18n,
   };

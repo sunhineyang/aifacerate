@@ -6,6 +6,19 @@ interface AnalyzeRequest {
   lang: string;   // 语言代码，如 'en' 或 'zh'
 }
 
+// 定义分析数据的基础结构
+interface AnalysisData {
+  analyzable?: boolean;        // 是否可以分析
+  score?: number;            // 评分 (0-100)
+  predicted_age?: number;    // 预测年龄
+  golden_quote?: string;     // 金句评语
+  celebrity_lookalike?: {    // 明星相似度
+    name: string;
+    country: string;
+  };
+  message?: string;          // 错误信息（当 analyzable 为 false 时）
+}
+
 // 定义DIFY API返回的数据类型（基于workflows/run接口）
 interface DifyWorkflowResponse {
   workflow_run_id: string;
@@ -14,16 +27,8 @@ interface DifyWorkflowResponse {
     id: string;
     workflow_id: string;
     status: string; // running / succeeded / failed / stopped
-    outputs?: {
-      analyzable?: boolean;        // 是否可以分析
-      score?: number;            // 评分 (0-100)
-      predicted_age?: number;    // 预测年龄
-      golden_quote?: string;     // 金句评语
-      celebrity_lookalike?: {    // 明星相似度
-        name: string;
-        country: string;
-      };
-      message?: string;          // 错误信息（当 analyzable 为 false 时）
+    outputs?: AnalysisData & {
+      res?: AnalysisData;      // 支持嵌套数据结构
     };
     error?: string;
     elapsed_time?: number;
