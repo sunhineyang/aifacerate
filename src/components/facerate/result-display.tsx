@@ -115,7 +115,7 @@ export function ResultDisplay({ image, result, onRestart, onShare, pageData }: R
           <div className="p-6 text-center">
             {/* 评分 */}
             <div className="mb-4">
-              <div className="text-5xl font-bold text-primary mb-2">
+              <div className="text-5xl font-bold text-primary mb-2" style={{ fontFamily: 'var(--font-heading)' }}>
                 {result.score.toFixed(1)}
               </div>
               <div className="flex justify-center mb-3">
@@ -148,15 +148,20 @@ export function ResultDisplay({ image, result, onRestart, onShare, pageData }: R
               <div className="relative">
                 <div className="text-4xl text-primary/30 absolute -top-2 -left-2">&ldquo;</div>
                 <div className="text-4xl text-primary/30 absolute -bottom-6 -right-2">&rdquo;</div>
-                <p className="text-card-foreground text-base leading-relaxed px-4">
+                <p className="text-primary text-lg font-bold leading-relaxed px-4" style={{ fontFamily: 'var(--font-heading)' }}>
                   {result.comment}
                 </p>
               </div>
             </div>
             
+            {/* 水印上方分隔线 */}
+            {!removeWatermark && (
+              <div className="w-16 h-px bg-gray-200 mx-auto mb-3"></div>
+            )}
+            
             {/* 网站水印 */}
             {!removeWatermark && (
-              <div className="text-muted-foreground text-sm">
+              <div className="text-gray-500 text-sm" style={{ opacity: 0.6 }}>
                 {pageData?.result?.watermark || 'aifacerate.com'}
               </div>
             )}
@@ -217,29 +222,24 @@ export function ResultDisplay({ image, result, onRestart, onShare, pageData }: R
                   const photoWidth = cardWidth;
                   const photoHeight = actualPhotoHeight;
                   
-                  // 判断是否需要背景（竖图需要背景）
-                  const needsBackground = imageAspectRatio < 0.8;
+                  // 绘制基础背景色
+                  ctx.fillStyle = '#f3f4f6'; // bg-gray-100
+                  ctx.fillRect(cardX, photoY, photoWidth, photoHeight);
                   
-                  if (needsBackground) {
-                    // 绘制渐变背景
-                    const gradient = ctx.createLinearGradient(cardX, photoY, cardX + photoWidth, photoY + photoHeight);
-                    gradient.addColorStop(0, '#f9fafb');
-                    gradient.addColorStop(0.5, '#f3f4f6');
-                    gradient.addColorStop(1, '#f9fafb');
-                    ctx.fillStyle = gradient;
-                    ctx.fillRect(cardX, photoY, photoWidth, photoHeight);
-                    
-                    // 绘制背景模糊图片
-                    ctx.save();
-                    ctx.globalAlpha = 0.2;
-                    ctx.filter = 'blur(8px)';
-                    ctx.drawImage(img, cardX - photoWidth * 0.05, photoY - photoHeight * 0.05, photoWidth * 1.1, photoHeight * 1.1);
-                    ctx.restore();
-                  } else {
-                    // 白色背景
-                    ctx.fillStyle = '#ffffff';
-                    ctx.fillRect(cardX, photoY, photoWidth, photoHeight);
-                  }
+                  // 绘制背景层 - 模糊透明效果（双层叠加方案）
+                  ctx.save();
+                  ctx.globalAlpha = 0.2;
+                  ctx.filter = 'blur(16px)'; // 增强模糊效果
+                  // 绘制放大的背景图片以填充整个区域
+                  ctx.drawImage(img, cardX - photoWidth * 0.05, photoY - photoHeight * 0.05, photoWidth * 1.1, photoHeight * 1.1);
+                  ctx.restore();
+                  
+                  // 添加渐变边缘效果
+                  const edgeGradient = ctx.createLinearGradient(cardX, photoY, cardX, photoY + photoHeight);
+                  edgeGradient.addColorStop(0, 'rgba(0,0,0,0)');
+                  edgeGradient.addColorStop(1, 'rgba(0,0,0,0.05)');
+                  ctx.fillStyle = edgeGradient;
+                  ctx.fillRect(cardX, photoY, photoWidth, photoHeight);
                   
                   // 计算主图片的显示尺寸（object-contain效果）
                   let drawWidth, drawHeight, drawX, drawY;
@@ -375,9 +375,9 @@ export function ResultDisplay({ image, result, onRestart, onShare, pageData }: R
                   const quoteStartX = contentX + 16; // px-4 = 16px
                   ctx.fillText('"', quoteStartX, currentY);
                   
-                  // 设置评语文本样式
-                  ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-foreground').trim() || '#374151'; // text-gray-700
-                  ctx.font = '16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+                  // 设置评语文本样式 - 使用主色调和加粗字体，与页面显示完全一致
+                  ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim() || '#2563eb'; // 主色调
+                  ctx.font = 'bold 18px var(--font-heading)'; // 18px对应text-lg，使用与页面一致的字体系统
                   ctx.textAlign = 'center';
                   ctx.textBaseline = 'top';
                   
@@ -418,13 +418,27 @@ export function ResultDisplay({ image, result, onRestart, onShare, pageData }: R
                   
                   currentY = quoteEndY + 30; // 评语后间距
                   
-                  // 绘制网站水印 - text-sm (14px) text-gray-400
+                  // 绘制水印上方分隔线
                   if (!removeWatermark) {
-                    ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-muted-foreground').trim() || '#9ca3af'; // text-gray-400
+                    const separatorY = currentY + 10;
+                    const separatorWidth = 64; // w-16 = 64px
+                    const separatorX = cardX + (cardWidth - separatorWidth) / 2;
+                    
+                    ctx.fillStyle = '#e5e7eb'; // bg-gray-200
+                    ctx.fillRect(separatorX, separatorY, separatorWidth, 1);
+                    
+                    currentY = separatorY + 15; // 分隔线后间距
+                  }
+                  
+                  // 绘制网站水印 - text-sm (14px) 灰色半透明
+                  if (!removeWatermark) {
+                    ctx.fillStyle = '#6b7280'; // text-gray-500
+                    ctx.globalAlpha = 0.6; // opacity: 0.6
                     ctx.font = '14px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
                     ctx.textAlign = 'center';
                     ctx.textBaseline = 'top';
-                    ctx.fillText(pageData?.result?.watermark || 'aifacerate.com', cardX + cardWidth / 2, currentY + 20);
+                    ctx.fillText(pageData?.result?.watermark || 'aifacerate.com', cardX + cardWidth / 2, currentY + 10);
+                    ctx.globalAlpha = 1.0; // 重置透明度
                   }
                   
                   // 下载高质量图片 - 使用原始文件名

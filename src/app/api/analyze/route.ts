@@ -178,17 +178,6 @@ export async function POST(request: NextRequest) {
     
     console.log('📊 DIFY 输出数据详情:', outputs);
     
-    // 检查分析结果 - 修复数据结构访问
-    // DIFY返回的数据结构是 {res: {实际数据}}
-    const analysisData = outputs.res || outputs;
-    if (analysisData.analyzable === false) {
-      console.log('❌ DIFY无法识别人脸:', analysisData.message);
-      return NextResponse.json(
-        { error: analysisData.message || '无法分析此图片，请尝试其他图片' },
-        { status: 400 }
-      );
-    }
-
     // 检查是否有有效的分析数据
     if (!outputs || typeof outputs !== 'object') {
       console.log('❌ DIFY返回数据格式异常:', outputs);
@@ -198,9 +187,26 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 严格验证DIFY返回的数据 - 修复数据结构访问
-    // DIFY返回的数据结构是 {res: {实际数据}}
-    const resData = outputs.res || outputs;
+    // 检查分析结果 - 修复数据结构访问
+    // DIFY返回的数据结构可能是 {res: {实际数据}} 或直接是数据
+    let analysisData = outputs;
+    
+    // 如果数据被包装在res字段中，则提取出来
+    if (outputs.res && typeof outputs.res === 'object') {
+      analysisData = outputs.res;
+      console.log('📦 检测到嵌套数据结构，提取res字段:', analysisData);
+    }
+    
+    if (analysisData.analyzable === false) {
+      console.log('❌ DIFY无法识别人脸:', analysisData.message);
+      return NextResponse.json(
+        { error: analysisData.message || '无法分析此图片，请尝试其他图片' },
+        { status: 400 }
+      );
+    }
+
+    // 严格验证DIFY返回的数据 - 只有当可以分析时才检查数据完整性
+    const resData = analysisData;
     
     // 检查必需的数据字段是否存在
     if (typeof resData.score !== 'number') {
