@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { compressImage, needsCompression } from '@/utils/imageCompression';
 
 // 定义分析结果的数据类型
 export interface AnalysisResult {
@@ -144,31 +145,53 @@ export function useAnalyze(): UseAnalyzeReturn {
 }
 
 /**
- * 将文件转换为base64格式
+ * 将文件转换为base64格式（包含压缩处理）
  * @param file - 要转换的文件
  * @returns Promise<string> - base64编码的字符串
  */
-export function convertToBase64(file: File): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
+export async function convertToBase64(file: File): Promise<string> {
+  try {
+    // 检查是否需要压缩（Vercel限制4.5MB，我们设置3MB安全边界）
+    let processedFile = file;
     
-    reader.onload = () => {
-      if (typeof reader.result === 'string') {
-        // 移除data:image/...;base64,前缀，只保留base64数据
-        const base64 = reader.result.split(',')[1];
-        resolve(base64);
-      } else {
-        reject(new Error('文件读取失败'));
-      }
-    };
+    if (needsCompression(file, 3000)) {
+      console.log('图片需要压缩:', {
+        原始大小: `${(file.size / 1024).toFixed(2)}KB`,
+        限制大小: '3000KB'
+      });
+      
+      processedFile = await compressImage(file, 3000, 0.8);
+      
+      console.log('图片压缩完成:', {
+        压缩前: `${(file.size / 1024).toFixed(2)}KB`,
+        压缩后: `${(processedFile.size / 1024).toFixed(2)}KB`
+      });
+    }
     
-    reader.onerror = () => {
-      reject(new Error('文件读取出错'));
-    };
-    
-    // 读取文件为data URL格式
-    reader.readAsDataURL(file);
-  });
+    // 转换为base64
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      
+      reader.onload = () => {
+        if (typeof reader.result === 'string') {
+          // 移除data:image/...;base64,前缀，只保留base64数据
+          const base64 = reader.result.split(',')[1];
+          resolve(base64);
+        } else {
+          reject(new Error('文件读取失败'));
+        }
+      };
+      
+      reader.onerror = () => {
+        reject(new Error('文件读取出错'));
+      };
+      
+      // 读取文件为data URL格式
+      reader.readAsDataURL(processedFile);
+    });
+  } catch (error) {
+    throw new Error(`图片处理失败: ${error instanceof Error ? error.message : '未知错误'}`);
+  }
 }
 
 /**
